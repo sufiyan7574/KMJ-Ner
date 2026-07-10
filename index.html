@@ -152,9 +152,11 @@ header.nav.scrolled{
   padding:12px 0;
 }
 .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:24px;}
-.brand{display:flex; align-items:center; gap:12px; font-family:'Cormorant',serif; font-size:21px; font-weight:600;}
-.brand-mark{width:38px;height:38px; border-radius:50%; background:linear-gradient(145deg,var(--emerald),var(--emerald-deep)); display:flex; align-items:center; justify-content:center; box-shadow:inset 0 0 0 1px rgba(212,175,55,.4);}
+.brand{display:flex; align-items:center; gap:11px; font-family:'Cormorant',serif; font-size:17px; font-weight:600; line-height:1.15;}
+.brand-mark{width:42px;height:42px; border-radius:50%; background:linear-gradient(145deg,var(--emerald),var(--emerald-deep)); display:flex; align-items:center; justify-content:center; box-shadow:inset 0 0 0 1px rgba(212,175,55,.4); overflow:hidden; flex-shrink:0;}
+.brand-mark img{width:100%;height:100%;object-fit:cover;}
 .brand-mark .star-motif{width:18px;height:18px; background:var(--gold-bright);}
+@media(max-width:420px){.brand{font-size:15px;}}
 .nav-links{display:flex; align-items:center; gap:32px; font-size:14px; font-weight:600;}
 .nav-links a{color:var(--ink-soft); position:relative; padding:4px 0;}
 .nav-links a:hover{color:var(--ink);}
@@ -2193,7 +2195,7 @@ window.I18N = {
 <!-- ================= NAV ================= -->
 <header class="nav" id="mainNav">
   <div class="container nav-inner">
-    <div class="brand"><span class="brand-mark"><span class="star-motif"></span></span> Kachchi Memon Jamat Ner</div>
+    <div class="brand"><span class="brand-mark"><img src="https://i.ibb.co/mFV0BxfN/file-0000000074047208a10073b035b000c1.png" alt="Kachchi Memon Jamat Ner logo"></span> Kachchi Memon Jamat Ner</div>
     <nav class="nav-links">
       <a href="#about" data-i18n="nav.about">About</a>
       <a href="#services" data-i18n="nav.services">Services</a>
@@ -2479,7 +2481,7 @@ window.I18N = {
   <div class="container">
     <div class="foot-grid">
       <div class="foot-brand">
-        <div class="brand" style="color:#F8F5EC;"><span class="brand-mark"><span class="star-motif"></span></span> Kachchi Memon Jamat Ner</div>
+        <div class="brand" style="color:#F8F5EC; font-size:18px;"><span class="brand-mark"><img src="https://i.ibb.co/mFV0BxfN/file-0000000074047208a10073b035b000c1.png" alt="Kachchi Memon Jamat Ner logo"></span> Kachchi Memon Jamat Ner</div>
         <p data-i18n="footer.tagline">Serving the community with faith, unity &amp; progress since 1949.</p>
         <div class="social-row">
           <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M14 9h3V6h-3a4 4 0 0 0-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2a1 1 0 0 1 1-1Z"/></svg></a>
