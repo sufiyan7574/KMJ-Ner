@@ -60,8 +60,12 @@ body{
   font-family:'Manrope',sans-serif;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
-  transition:background .4s var(--ease), color .4s var(--ease);
+  transition:background .4s var(--ease), color .4s var(--ease), opacity .25s ease;
 }
+body.i18n-switching{opacity:.45;}
+.lang-menu button.active{color:var(--gold); background:var(--emerald-tint);}
+.lang-menu button .chk{float:right; opacity:0;}
+.lang-menu button.active .chk{opacity:1;}
 h1,h2,h3,h4{
   font-family:'Cormorant',serif;
   font-weight:600;
@@ -585,20 +589,1620 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
 </style>
 </head>
 <body>
+<script id="i18n-data">
+window.I18N = {
+  "en": {
+    "meta": {
+      "code": "en",
+      "label": "English",
+      "flag": "🇬🇧"
+    },
+    "nav": {
+      "about": "About",
+      "services": "Services",
+      "events": "Events",
+      "directory": "Directory",
+      "gallery": "Gallery",
+      "leadership": "Leadership",
+      "donate": "Donate",
+      "contact": "Contact"
+    },
+    "hero": {
+      "eyebrow": "Est. 1949 · Ner, Maharashtra",
+      "titleLine1": "Kachchi Memon",
+      "titleLine2": "Jamat Ner",
+      "sub": "Serving the community with faith, unity & progress — for 75 years and the generations still to come.",
+      "btnMember": "Become a Member",
+      "btnDonate": "Donate Now",
+      "btnEvents": "Upcoming Events",
+      "statMembers": "Members",
+      "statYears": "Years of Service",
+      "statFamilies": "Families",
+      "statStudents": "Students Supported",
+      "statWelfare": "Community Welfare"
+    },
+    "about": {
+      "eyebrow": "Our Story",
+      "title": "A community built on trust, carried forward by service.",
+      "sub": "Kachchi Memon Jamat Ner has stood at the heart of Ner's Muslim community for over seven decades — a trust founded on the simple idea that no member should face hardship, education, or opportunity alone. What began as a small gathering of traders and families has grown into a full welfare institution spanning marriage, medicine, education, and enterprise.",
+      "pillars": [
+        "Unity",
+        "Education",
+        "Charity",
+        "Business Growth",
+        "Social Welfare",
+        "Youth Development"
+      ]
+    },
+    "timeline": [
+      {
+        "year": "1949",
+        "title": "The Jamat is founded",
+        "desc": "A handful of families formalise a trust to support one another through trade, faith, and welfare."
+      },
+      {
+        "year": "1978",
+        "title": "First community hall built",
+        "desc": "A permanent home for weddings, gatherings, and Friday congregations opens its doors."
+      },
+      {
+        "year": "1996",
+        "title": "Education fund launched",
+        "desc": "Scholarships begin supporting school and college-going children across member families."
+      },
+      {
+        "year": "2014",
+        "title": "Medical assistance programme",
+        "desc": "Structured support for treatment costs, second opinions, and emergency care is introduced."
+      },
+      {
+        "year": "2026",
+        "title": "Digital-First Jamat",
+        "desc": "Launching a modern digital ecosystem with member management, online donations, digital membership cards, business directory, event registration, community welfare services, and a secure member portal designed for future generations."
+      }
+    ],
+    "president": {
+      "eyebrow": "President's Message",
+      "quote": "Kachchi Memon Jamat Ner has always stood for unity, service, compassion, and progress. Our community has grown stronger by preserving our traditions while embracing positive change. Every member plays an important role in strengthening our society. Through education, social welfare, business support, and charitable initiatives, we strive to create a brighter future for the coming generations. May Allah (SWT) continue to bless our community with unity, prosperity, and the ability to serve humanity with sincerity.",
+      "name": "Haji Musa Tikki",
+      "role": "President, Kachchi Memon Jamat Ner"
+    },
+    "services": {
+      "eyebrow": "What We Offer",
+      "title": "Community services, end to end",
+      "sub": "From the first proposal to the final prayer — twelve programmes built around the real needs of member families.",
+      "items": [
+        {
+          "title": "Marriage Bureau",
+          "desc": "Verified matches within the community, guided by family and trust."
+        },
+        {
+          "title": "Education Scholarships",
+          "desc": "Annual support for school, college, and vocational learners."
+        },
+        {
+          "title": "Medical Assistance",
+          "desc": "Treatment cost support, referrals, and second-opinion guidance."
+        },
+        {
+          "title": "Zakat & Charity",
+          "desc": "Structured distribution to families identified by the welfare team."
+        },
+        {
+          "title": "Funeral Services",
+          "desc": "Ghusl, transport, and burial arrangements handled with dignity."
+        },
+        {
+          "title": "Community Hall Booking",
+          "desc": "Reserve the Jamat hall for weddings, majlis, and gatherings."
+        },
+        {
+          "title": "Business Directory",
+          "desc": "Discover and support member-owned businesses across trades."
+        },
+        {
+          "title": "Youth Development",
+          "desc": "Mentorship, sports, and skill-building for the next generation."
+        },
+        {
+          "title": "Women's Welfare",
+          "desc": "Tailoring, tuition, and support circles led by community women."
+        },
+        {
+          "title": "Senior Citizen Support",
+          "desc": "Home visits, medical follow-ups, and companionship programmes."
+        },
+        {
+          "title": "Legal Assistance",
+          "desc": "Access to community-vetted legal advice for family and property matters."
+        },
+        {
+          "title": "Emergency Support",
+          "desc": "A 24-hour point of contact for urgent family or medical crises."
+        }
+      ]
+    },
+    "events": {
+      "eyebrow": "Mark Your Calendar",
+      "title": "Upcoming events",
+      "register": "Register",
+      "days": "Days",
+      "hrs": "Hrs",
+      "min": "Min",
+      "sec": "Sec",
+      "items": [
+        {
+          "title": "Annual Milad-un-Nabi Gathering",
+          "desc": "Community-wide programme with lecture, nasheeds, and dinner."
+        },
+        {
+          "title": "Scholarship Distribution Day",
+          "desc": "Felicitating this year's scholarship recipients and toppers."
+        },
+        {
+          "title": "Free Medical Health Camp",
+          "desc": "General check-up, eye camp, and diabetes screening for all members."
+        }
+      ]
+    },
+    "announcements": {
+      "eyebrow": "Stay Informed",
+      "title": "Latest announcements",
+      "items": [
+        {
+          "date": "02 Jul 2026",
+          "title": "Ramzan Relief Fund extended",
+          "desc": "Given the response so far, the committee has extended collection by two weeks to reach the ₹10 lakh goal."
+        },
+        {
+          "date": "24 Jun 2026",
+          "title": "New office hours for the Jamat office",
+          "desc": "The community office will now remain open till 6 PM on weekdays to accommodate working members."
+        },
+        {
+          "date": "11 Jun 2026",
+          "title": "Business directory now open for listings",
+          "desc": "Member-owned businesses can now register for a free listing on the community directory."
+        }
+      ]
+    },
+    "directory": {
+      "eyebrow": "Member Businesses",
+      "title": "Business directory",
+      "sub": "Support fellow members — search by name, trade, or neighbourhood.",
+      "searchPlaceholder": "Search business or owner name…",
+      "allCategories": "All Categories",
+      "empty": "No businesses match your search — try a different name or category.",
+      "categories": {
+        "Textiles": "Textiles",
+        "Healthcare": "Healthcare",
+        "Hardware": "Hardware",
+        "Electronics": "Electronics",
+        "Food & Bakery": "Food & Bakery",
+        "Education": "Education",
+        "Logistics": "Logistics",
+        "Fashion": "Fashion",
+        "Agriculture": "Agriculture"
+      }
+    },
+    "gallery": {
+      "eyebrow": "Moments",
+      "title": "Community gallery",
+      "tabs": [
+        "All",
+        "Events",
+        "Charity",
+        "Education",
+        "Family"
+      ]
+    },
+    "donate": {
+      "eyebrow": "Ramzan Relief Fund",
+      "title": "Every rupee reaches a family that needs it.",
+      "desc": "100% of contributions go directly to ration kits, medical aid, and Eid support for families identified by our welfare committee.",
+      "raised": "raised",
+      "goal": "goal",
+      "btnDonate": "Donate Now",
+      "btnOnline": "Give Online",
+      "qrCaption": "Scan to donate via UPI",
+      "recentDonors": "Recent Donors"
+    },
+    "testimonials": {
+      "eyebrow": "In Their Words",
+      "title": "What our members say",
+      "items": [
+        {
+          "quote": "The scholarship programme changed my daughter's life — she's now studying engineering because the Jamat believed in her before we could afford to.",
+          "name": "Ayesha R.",
+          "role": "Member since 2009"
+        },
+        {
+          "quote": "When my father needed urgent surgery, the medical assistance desk had funds arranged within two days. That kind of support is rare anywhere.",
+          "name": "Kaif M.",
+          "role": "Member since 2015"
+        },
+        {
+          "quote": "Listing my shop on the business directory brought me customers I never would have reached on my own. The community truly looks after its own.",
+          "name": "Sadiya T.",
+          "role": "Member since 2018"
+        }
+      ]
+    },
+    "leadership": {
+      "eyebrow": "Leadership",
+      "title": "The people behind the Jamat",
+      "sub": "Elected trustees who carry forward 75 years of community trust.",
+      "committeeGridTitle": "Managing Committee Members",
+      "roles": {
+        "President": "President",
+        "Vice President": "Vice President",
+        "Secretary": "Secretary",
+        "Treasurer": "Treasurer",
+        "Committee Member": "Committee Member"
+      }
+    },
+    "modules": {
+      "eyebrow": "Coming to the Portal",
+      "title": "Building the digital Jamat",
+      "sub": "Nineteen modules in active development — a single login for every service the community offers.",
+      "items": [
+        {
+          "title": "Member Login",
+          "tag": "Q3 2026"
+        },
+        {
+          "title": "Digital Membership Card",
+          "tag": "Q3 2026"
+        },
+        {
+          "title": "Online Registration",
+          "tag": "Q3 2026"
+        },
+        {
+          "title": "Matrimonial Portal",
+          "tag": "Q4 2026"
+        },
+        {
+          "title": "Scholarship Portal",
+          "tag": "Q4 2026"
+        },
+        {
+          "title": "Medical Assistance Portal",
+          "tag": "Q4 2026"
+        },
+        {
+          "title": "Blood Donor Directory",
+          "tag": "Q4 2026"
+        },
+        {
+          "title": "Funeral Management",
+          "tag": "2027"
+        },
+        {
+          "title": "Community Hall Booking",
+          "tag": "2027"
+        },
+        {
+          "title": "Business Directory",
+          "tag": "Live"
+        },
+        {
+          "title": "Volunteer Registration",
+          "tag": "2027"
+        },
+        {
+          "title": "Complaint & Suggestion Portal",
+          "tag": "2027"
+        },
+        {
+          "title": "Job Portal",
+          "tag": "2027"
+        },
+        {
+          "title": "Family Directory",
+          "tag": "2027"
+        },
+        {
+          "title": "Document Downloads",
+          "tag": "2027"
+        },
+        {
+          "title": "Event Registration",
+          "tag": "Q3 2026"
+        },
+        {
+          "title": "Donation History",
+          "tag": "Q4 2026"
+        },
+        {
+          "title": "Committee Dashboard",
+          "tag": "2027"
+        },
+        {
+          "title": "Admin Dashboard",
+          "tag": "2027"
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "Questions",
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "q": "Who is eligible to become a member of the Jamat?",
+          "a": "Any Kachchi Memon family residing in or connected to Ner can apply for membership through the registration desk or the upcoming online portal."
+        },
+        {
+          "q": "How is the Zakat and Charity fund distributed?",
+          "a": "The welfare committee identifies eligible families through home visits and community references, then disburses funds monthly with full transparency."
+        },
+        {
+          "q": "Can non-members list their business in the directory?",
+          "a": "The directory is currently reserved for member-owned businesses. Membership can be completed in a single visit to the Jamat office."
+        },
+        {
+          "q": "How do I apply for a medical assistance grant?",
+          "a": "Submit medical documents and estimates to the office or, once live, through the Medical Assistance Portal — the committee typically responds within 48 hours."
+        }
+      ]
+    },
+    "contact": {
+      "eyebrow": "Reach Us",
+      "title": "Get in touch",
+      "mapPlaceholder": "Map placeholder — Jamat Ner Community Hall",
+      "address": "Jamat Community Hall, Main Road, Ner, Yavatmal District, Maharashtra 445204",
+      "hours": "Mon – Sat, 10:00 AM – 6:00 PM",
+      "formName": "Full name",
+      "formPhone": "Phone number",
+      "formEmail": "Email address",
+      "formMessage": "How can we help?",
+      "formSubmit": "Send Message",
+      "formSuccess": "Message sent — placeholder form."
+    },
+    "footer": {
+      "tagline": "Serving the community with faith, unity & progress since 1949.",
+      "prayerTimes": "Prayer Times",
+      "prayers": [
+        "Fajr",
+        "Zuhr",
+        "Asr",
+        "Maghrib",
+        "Isha"
+      ],
+      "quickLinks": "Quick Links",
+      "quickLinksItems": [
+        "About the Jamat",
+        "Community Services",
+        "Business Directory",
+        "Donations",
+        "Contact Us"
+      ],
+      "newsletter": "Newsletter",
+      "newsletterDesc": "Monthly updates on events, welfare drives, and Jamat news.",
+      "newsletterPlaceholder": "Your email",
+      "newsletterBtn": "Join",
+      "newsletterSuccess": "Subscribed — placeholder.",
+      "copyright": "© 2026 Kachchi Memon Jamat Ner. All rights reserved.",
+      "builtWith": "Built with care for the community."
+    },
+    "misc": {
+      "darkModeAria": "Toggle dark mode",
+      "menuAria": "Open menu"
+    }
+  },
+  "hi": {
+    "meta": {
+      "code": "hi",
+      "label": "हिन्दी",
+      "flag": "🇮🇳"
+    },
+    "nav": {
+      "about": "परिचय",
+      "services": "सेवाएं",
+      "events": "कार्यक्रम",
+      "directory": "व्यापार सूची",
+      "gallery": "गैलरी",
+      "leadership": "नेतृत्व",
+      "donate": "दान करें",
+      "contact": "संपर्क करें"
+    },
+    "hero": {
+      "eyebrow": "स्थापना 1949 · नेर, महाराष्ट्र",
+      "titleLine1": "कच्छी मेमन",
+      "titleLine2": "जमात नेर",
+      "sub": "75 वर्षों से और आने वाली पीढ़ियों तक — आस्था, एकता और प्रगति के साथ समुदाय की सेवा।",
+      "btnMember": "सदस्य बनें",
+      "btnDonate": "अभी दान करें",
+      "btnEvents": "आगामी कार्यक्रम",
+      "statMembers": "सदस्य",
+      "statYears": "वर्षों की सेवा",
+      "statFamilies": "परिवार",
+      "statStudents": "सहायता प्राप्त छात्र",
+      "statWelfare": "सामुदायिक कल्याण"
+    },
+    "about": {
+      "eyebrow": "हमारी कहानी",
+      "title": "विश्वास पर बनी, सेवा से आगे बढ़ती एक बिरादरी।",
+      "sub": "कच्छी मेमन जमात नेर सात दशकों से अधिक समय से नेर के मुस्लिम समुदाय के केंद्र में खड़ी है — इस सरल विचार पर आधारित एक ट्रस्ट कि किसी भी सदस्य को कठिनाई, शिक्षा या अवसर की कमी अकेले नहीं झेलनी चाहिए। व्यापारियों और परिवारों के एक छोटे समूह से शुरू होकर यह विवाह, चिकित्सा, शिक्षा और व्यापार तक फैली एक पूर्ण कल्याण संस्था बन गई है।",
+      "pillars": [
+        "एकता",
+        "शिक्षा",
+        "परोपकार",
+        "व्यापार विकास",
+        "सामाजिक कल्याण",
+        "युवा विकास"
+      ]
+    },
+    "timeline": [
+      {
+        "year": "1949",
+        "title": "जमात की स्थापना",
+        "desc": "कुछ परिवारों ने व्यापार, आस्था और कल्याण के माध्यम से एक-दूसरे का साथ देने के लिए एक ट्रस्ट बनाया।"
+      },
+      {
+        "year": "1978",
+        "title": "पहला सामुदायिक हॉल बना",
+        "desc": "विवाह, सभाओं और शुक्रवार की नमाज़ के लिए एक स्थायी स्थान खुला।"
+      },
+      {
+        "year": "1996",
+        "title": "शिक्षा फंड शुरू हुआ",
+        "desc": "सदस्य परिवारों के स्कूल और कॉलेज जाने वाले बच्चों के लिए छात्रवृत्ति शुरू हुई।"
+      },
+      {
+        "year": "2014",
+        "title": "चिकित्सा सहायता कार्यक्रम",
+        "desc": "इलाज की लागत, दूसरी राय और आपातकालीन देखभाल के लिए संरचित सहायता शुरू की गई।"
+      },
+      {
+        "year": "2026",
+        "title": "डिजिटल-फर्स्ट जमात",
+        "desc": "सदस्य प्रबंधन, ऑनलाइन दान, डिजिटल सदस्यता कार्ड, व्यापार सूची, कार्यक्रम पंजीकरण, सामुदायिक कल्याण सेवाओं और आने वाली पीढ़ियों के लिए एक सुरक्षित सदस्य पोर्टल के साथ एक आधुनिक डिजिटल पारिस्थितिकी तंत्र लॉन्च करना।"
+      }
+    ],
+    "president": {
+      "eyebrow": "अध्यक्ष का संदेश",
+      "quote": "कच्छी मेमन जमात नेर हमेशा एकता, सेवा, करुणा और प्रगति के लिए खड़ी रही है। हमारा समुदाय सकारात्मक बदलाव को अपनाते हुए अपनी परंपराओं को संजोकर मज़बूत हुआ है। समाज को मज़बूत बनाने में हर सदस्य की महत्वपूर्ण भूमिका है। शिक्षा, सामाजिक कल्याण, व्यापार सहायता और परोपकारी पहलों के माध्यम से, हम आने वाली पीढ़ियों के लिए एक उज्जवल भविष्य बनाने का प्रयास करते हैं। अल्लाह (सुब्हानहू व तआला) हमारे समुदाय को एकता, समृद्धि और मानवता की निष्ठापूर्वक सेवा करने की क्षमता से नवाज़ता रहे।",
+      "name": "हाजी मूसा टिक्की",
+      "role": "अध्यक्ष, कच्छी मेमन जमात नेर"
+    },
+    "services": {
+      "eyebrow": "हमारी सेवाएं",
+      "title": "शुरू से अंत तक सामुदायिक सेवाएं",
+      "sub": "पहले प्रस्ताव से लेकर अंतिम दुआ तक — सदस्य परिवारों की वास्तविक ज़रूरतों के आधार पर बने बारह कार्यक्रम।",
+      "items": [
+        {
+          "title": "विवाह ब्यूरो",
+          "desc": "परिवार और विश्वास द्वारा निर्देशित, समुदाय के भीतर सत्यापित रिश्ते।"
+        },
+        {
+          "title": "शिक्षा छात्रवृत्ति",
+          "desc": "स्कूल, कॉलेज और व्यावसायिक शिक्षार्थियों के लिए वार्षिक सहायता।"
+        },
+        {
+          "title": "चिकित्सा सहायता",
+          "desc": "इलाज की लागत सहायता, रेफरल और दूसरी राय मार्गदर्शन।"
+        },
+        {
+          "title": "ज़कात और परोपकार",
+          "desc": "कल्याण टीम द्वारा पहचाने गए परिवारों के लिए व्यवस्थित वितरण।"
+        },
+        {
+          "title": "अंतिम संस्कार सेवाएं",
+          "desc": "गुस्ल, परिवहन और दफन व्यवस्था सम्मानपूर्वक संभाली जाती है।"
+        },
+        {
+          "title": "सामुदायिक हॉल बुकिंग",
+          "desc": "विवाह, मजलिस और सभाओं के लिए जमात हॉल आरक्षित करें।"
+        },
+        {
+          "title": "व्यापार सूची",
+          "desc": "विभिन्न व्यवसायों में सदस्यों के स्वामित्व वाले व्यवसायों को खोजें और समर्थन दें।"
+        },
+        {
+          "title": "युवा विकास",
+          "desc": "अगली पीढ़ी के लिए मार्गदर्शन, खेल और कौशल-निर्माण।"
+        },
+        {
+          "title": "महिला कल्याण",
+          "desc": "समुदाय की महिलाओं द्वारा संचालित सिलाई, ट्यूशन और सहायता समूह।"
+        },
+        {
+          "title": "वरिष्ठ नागरिक सहायता",
+          "desc": "गृह भेंट, चिकित्सा फॉलो-अप और साथ देने के कार्यक्रम।"
+        },
+        {
+          "title": "कानूनी सहायता",
+          "desc": "पारिवारिक और संपत्ति संबंधी मामलों के लिए समुदाय-सत्यापित कानूनी सलाह।"
+        },
+        {
+          "title": "आपातकालीन सहायता",
+          "desc": "तत्काल पारिवारिक या चिकित्सा संकट के लिए 24 घंटे संपर्क सुविधा।"
+        }
+      ]
+    },
+    "events": {
+      "eyebrow": "कैलेंडर में अंकित करें",
+      "title": "आगामी कार्यक्रम",
+      "register": "पंजीकरण करें",
+      "days": "दिन",
+      "hrs": "घंटे",
+      "min": "मिनट",
+      "sec": "सेकंड",
+      "items": [
+        {
+          "title": "वार्षिक मिलाद-उन-नबी सभा",
+          "desc": "व्याख्यान, नशीद और रात्रिभोज के साथ समुदाय-व्यापी कार्यक्रम।"
+        },
+        {
+          "title": "छात्रवृत्ति वितरण दिवस",
+          "desc": "इस वर्ष के छात्रवृत्ति प्राप्तकर्ताओं और टॉपर्स का सम्मान।"
+        },
+        {
+          "title": "निःशुल्क चिकित्सा स्वास्थ्य शिविर",
+          "desc": "सभी सदस्यों के लिए सामान्य जांच, नेत्र शिविर और मधुमेह जांच।"
+        }
+      ]
+    },
+    "announcements": {
+      "eyebrow": "अपडेट रहें",
+      "title": "नवीनतम सूचनाएं",
+      "items": [
+        {
+          "date": "02 जुलाई 2026",
+          "title": "रमज़ान राहत कोष अवधि बढ़ाई गई",
+          "desc": "अब तक मिली प्रतिक्रिया को देखते हुए, समिति ने ₹10 लाख के लक्ष्य तक पहुंचने के लिए संग्रहण अवधि दो सप्ताह बढ़ा दी है।"
+        },
+        {
+          "date": "24 जून 2026",
+          "title": "जमात कार्यालय के नए समय",
+          "desc": "कार्यरत सदस्यों की सुविधा के लिए अब सामुदायिक कार्यालय सप्ताह के दिनों में शाम 6 बजे तक खुला रहेगा।"
+        },
+        {
+          "date": "11 जून 2026",
+          "title": "व्यापार सूची अब सूचीबद्ध करने हेतु खुली",
+          "desc": "सदस्यों के स्वामित्व वाले व्यवसाय अब सामुदायिक सूची में निःशुल्क सूचीकरण के लिए पंजीकरण कर सकते हैं।"
+        }
+      ]
+    },
+    "directory": {
+      "eyebrow": "सदस्य व्यवसाय",
+      "title": "व्यापार सूची",
+      "sub": "साथी सदस्यों का समर्थन करें — नाम, व्यापार या मोहल्ले से खोजें।",
+      "searchPlaceholder": "व्यवसाय या मालिक का नाम खोजें…",
+      "allCategories": "सभी श्रेणियां",
+      "empty": "आपकी खोज से कोई व्यवसाय मेल नहीं खाता — कोई अलग नाम या श्रेणी आज़माएं।",
+      "categories": {
+        "Textiles": "वस्त्र",
+        "Healthcare": "स्वास्थ्य सेवा",
+        "Hardware": "हार्डवेयर",
+        "Electronics": "इलेक्ट्रॉनिक्स",
+        "Food & Bakery": "खाद्य और बेकरी",
+        "Education": "शिक्षा",
+        "Logistics": "रसद",
+        "Fashion": "फैशन",
+        "Agriculture": "कृषि"
+      }
+    },
+    "gallery": {
+      "eyebrow": "यादगार पल",
+      "title": "सामुदायिक गैलरी",
+      "tabs": [
+        "सभी",
+        "कार्यक्रम",
+        "परोपकार",
+        "शिक्षा",
+        "परिवार"
+      ]
+    },
+    "donate": {
+      "eyebrow": "रमज़ान राहत कोष",
+      "title": "हर रुपया ज़रूरतमंद परिवार तक पहुंचता है।",
+      "desc": "हमारी कल्याण समिति द्वारा पहचाने गए परिवारों के लिए राशन किट, चिकित्सा सहायता और ईद सहायता में 100% योगदान सीधे जाता है।",
+      "raised": "जुटाए गए",
+      "goal": "लक्ष्य",
+      "btnDonate": "अभी दान करें",
+      "btnOnline": "ऑनलाइन दान करें",
+      "qrCaption": "UPI से दान करने के लिए स्कैन करें",
+      "recentDonors": "हाल के दानदाता"
+    },
+    "testimonials": {
+      "eyebrow": "उनके शब्दों में",
+      "title": "हमारे सदस्य क्या कहते हैं",
+      "items": [
+        {
+          "quote": "छात्रवृत्ति कार्यक्रम ने मेरी बेटी की ज़िंदगी बदल दी — आज वह इंजीनियरिंग पढ़ रही है क्योंकि जमात ने उस पर विश्वास किया जब हम खुद यह वहन नहीं कर सकते थे।",
+          "name": "आयशा आर.",
+          "role": "सदस्य 2009 से"
+        },
+        {
+          "quote": "जब मेरे पिता को तत्काल सर्जरी की ज़रूरत पड़ी, चिकित्सा सहायता डेस्क ने दो दिन के भीतर धनराशि की व्यवस्था कर दी। ऐसी सहायता कहीं और मिलना दुर्लभ है।",
+          "name": "काइफ एम.",
+          "role": "सदस्य 2015 से"
+        },
+        {
+          "quote": "व्यापार सूची में अपनी दुकान सूचीबद्ध करने से मुझे ऐसे ग्राहक मिले जिन तक मैं अकेले कभी नहीं पहुंच पाता। समुदाय वाकई अपनों का ख्याल रखता है।",
+          "name": "सादिया टी.",
+          "role": "सदस्य 2018 से"
+        }
+      ]
+    },
+    "leadership": {
+      "eyebrow": "नेतृत्व",
+      "title": "जमात के पीछे के लोग",
+      "sub": "निर्वाचित ट्रस्टी जो 75 वर्षों के सामुदायिक विश्वास को आगे बढ़ाते हैं।",
+      "committeeGridTitle": "प्रबंध समिति सदस्य",
+      "roles": {
+        "President": "अध्यक्ष",
+        "Vice President": "उपाध्यक्ष",
+        "Secretary": "सचिव",
+        "Treasurer": "कोषाध्यक्ष",
+        "Committee Member": "समिति सदस्य"
+      }
+    },
+    "modules": {
+      "eyebrow": "पोर्टल पर जल्द आ रहा है",
+      "title": "डिजिटल जमात का निर्माण",
+      "sub": "सक्रिय विकास में उन्नीस मॉड्यूल — समुदाय की हर सेवा के लिए एक ही लॉगिन।",
+      "items": [
+        {
+          "title": "सदस्य लॉगिन",
+          "tag": "तिमाही 3, 2026"
+        },
+        {
+          "title": "डिजिटल सदस्यता कार्ड",
+          "tag": "तिमाही 3, 2026"
+        },
+        {
+          "title": "ऑनलाइन पंजीकरण",
+          "tag": "तिमाही 3, 2026"
+        },
+        {
+          "title": "वैवाहिक पोर्टल",
+          "tag": "तिमाही 4, 2026"
+        },
+        {
+          "title": "छात्रवृत्ति पोर्टल",
+          "tag": "तिमाही 4, 2026"
+        },
+        {
+          "title": "चिकित्सा सहायता पोर्टल",
+          "tag": "तिमाही 4, 2026"
+        },
+        {
+          "title": "रक्तदाता सूची",
+          "tag": "तिमाही 4, 2026"
+        },
+        {
+          "title": "अंतिम संस्कार प्रबंधन",
+          "tag": "2027"
+        },
+        {
+          "title": "सामुदायिक हॉल बुकिंग",
+          "tag": "2027"
+        },
+        {
+          "title": "व्यापार सूची",
+          "tag": "लाइव"
+        },
+        {
+          "title": "स्वयंसेवक पंजीकरण",
+          "tag": "2027"
+        },
+        {
+          "title": "शिकायत और सुझाव पोर्टल",
+          "tag": "2027"
+        },
+        {
+          "title": "नौकरी पोर्टल",
+          "tag": "2027"
+        },
+        {
+          "title": "परिवार सूची",
+          "tag": "2027"
+        },
+        {
+          "title": "दस्तावेज़ डाउनलोड",
+          "tag": "2027"
+        },
+        {
+          "title": "कार्यक्रम पंजीकरण",
+          "tag": "तिमाही 3, 2026"
+        },
+        {
+          "title": "दान इतिहास",
+          "tag": "तिमाही 4, 2026"
+        },
+        {
+          "title": "समिति डैशबोर्ड",
+          "tag": "2027"
+        },
+        {
+          "title": "एडमिन डैशबोर्ड",
+          "tag": "2027"
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "प्रश्न",
+      "title": "अक्सर पूछे जाने वाले प्रश्न",
+      "items": [
+        {
+          "q": "जमात का सदस्य बनने के लिए कौन पात्र है?",
+          "a": "नेर में रहने वाला या नेर से जुड़ा कोई भी कच्छी मेमन परिवार पंजीकरण डेस्क या आगामी ऑनलाइन पोर्टल के माध्यम से सदस्यता के लिए आवेदन कर सकता है।"
+        },
+        {
+          "q": "ज़कात और परोपकार कोष का वितरण कैसे होता है?",
+          "a": "कल्याण समिति घर-घर जाकर और सामुदायिक संदर्भों के माध्यम से पात्र परिवारों की पहचान करती है, फिर पूर्ण पारदर्शिता के साथ मासिक रूप से धनराशि वितरित करती है।"
+        },
+        {
+          "q": "क्या गैर-सदस्य अपना व्यवसाय सूची में सूचीबद्ध कर सकते हैं?",
+          "a": "यह सूची फिलहाल सदस्यों के स्वामित्व वाले व्यवसायों के लिए आरक्षित है। जमात कार्यालय में एक ही भेंट में सदस्यता पूरी की जा सकती है।"
+        },
+        {
+          "q": "चिकित्सा सहायता अनुदान के लिए कैसे आवेदन करें?",
+          "a": "चिकित्सा दस्तावेज़ और अनुमान कार्यालय में जमा करें या, लाइव होने पर, चिकित्सा सहायता पोर्टल के माध्यम से — समिति आमतौर पर 48 घंटों के भीतर जवाब देती है।"
+        }
+      ]
+    },
+    "contact": {
+      "eyebrow": "हमसे संपर्क करें",
+      "title": "संपर्क करें",
+      "mapPlaceholder": "मानचित्र प्लेसहोल्डर — जमात नेर सामुदायिक हॉल",
+      "address": "जमात सामुदायिक हॉल, मुख्य मार्ग, नेर, यवतमाल ज़िला, महाराष्ट्र 445204",
+      "hours": "सोम – शनि, सुबह 10:00 – शाम 6:00",
+      "formName": "पूरा नाम",
+      "formPhone": "फ़ोन नंबर",
+      "formEmail": "ईमेल पता",
+      "formMessage": "हम आपकी कैसे मदद कर सकते हैं?",
+      "formSubmit": "संदेश भेजें",
+      "formSuccess": "संदेश भेजा गया — यह एक प्लेसहोल्डर फॉर्म है।"
+    },
+    "footer": {
+      "tagline": "1949 से आस्था, एकता और प्रगति के साथ समुदाय की सेवा।",
+      "prayerTimes": "नमाज़ के समय",
+      "prayers": [
+        "फज्र",
+        "ज़ुहर",
+        "असर",
+        "मग़रिब",
+        "इशा"
+      ],
+      "quickLinks": "त्वरित लिंक",
+      "quickLinksItems": [
+        "जमात के बारे में",
+        "सामुदायिक सेवाएं",
+        "व्यापार सूची",
+        "दान",
+        "संपर्क करें"
+      ],
+      "newsletter": "न्यूज़लेटर",
+      "newsletterDesc": "कार्यक्रमों, कल्याण अभियानों और जमात समाचार पर मासिक अपडेट।",
+      "newsletterPlaceholder": "आपका ईमेल",
+      "newsletterBtn": "जुड़ें",
+      "newsletterSuccess": "सदस्यता ली गई — यह एक प्लेसहोल्डर है।",
+      "copyright": "© 2026 कच्छी मेमन जमात नेर। सर्वाधिकार सुरक्षित।",
+      "builtWith": "समुदाय के लिए प्रेम से बनाया गया।"
+    },
+    "misc": {
+      "darkModeAria": "डार्क मोड बदलें",
+      "menuAria": "मेनू खोलें"
+    }
+  },
+  "mr": {
+    "meta": {
+      "code": "mr",
+      "label": "मराठी",
+      "flag": "🇮🇳"
+    },
+    "nav": {
+      "about": "आमच्याबद्दल",
+      "services": "सेवा",
+      "events": "कार्यक्रम",
+      "directory": "व्यवसाय सूची",
+      "gallery": "गॅलरी",
+      "leadership": "नेतृत्व",
+      "donate": "देणगी द्या",
+      "contact": "संपर्क"
+    },
+    "hero": {
+      "eyebrow": "स्थापना 1949 · नेर, महाराष्ट्र",
+      "titleLine1": "कच्छी मेमन",
+      "titleLine2": "जमात नेर",
+      "sub": "75 वर्षांपासून आणि पुढील पिढ्यांसाठी — श्रद्धा, एकता आणि प्रगतीने समाजाची सेवा.",
+      "btnMember": "सदस्य व्हा",
+      "btnDonate": "आता देणगी द्या",
+      "btnEvents": "आगामी कार्यक्रम",
+      "statMembers": "सदस्य",
+      "statYears": "सेवेची वर्षे",
+      "statFamilies": "कुटुंबे",
+      "statStudents": "सहाय्य मिळालेले विद्यार्थी",
+      "statWelfare": "सामुदायिक कल्याण"
+    },
+    "about": {
+      "eyebrow": "आमची कहाणी",
+      "title": "विश्वासावर उभी असलेली, सेवेने पुढे नेलेली बिरादरी.",
+      "sub": "कच्छी मेमन जमात नेर गेल्या सत्तर वर्षांहून अधिक काळ नेरच्या मुस्लिम समाजाच्या केंद्रस्थानी आहे — कोणत्याही सदस्याला अडचण, शिक्षण किंवा संधीचा अभाव एकट्याने सोसावा लागू नये या साध्या विचारावर आधारित हा विश्वस्त संस्था. व्यापारी व कुटुंबांच्या एका लहान गटापासून सुरू झालेली ही संस्था आज विवाह, वैद्यकीय सेवा, शिक्षण आणि व्यवसाय अशा सर्व क्षेत्रांत पसरलेली एक पूर्ण कल्याण संस्था बनली आहे.",
+      "pillars": [
+        "एकता",
+        "शिक्षण",
+        "परोपकार",
+        "व्यवसाय वृद्धी",
+        "सामाजिक कल्याण",
+        "युवा विकास"
+      ]
+    },
+    "timeline": [
+      {
+        "year": "1949",
+        "title": "जमातीची स्थापना",
+        "desc": "काही कुटुंबांनी व्यापार, श्रद्धा आणि कल्याणाच्या माध्यमातून एकमेकांना साथ देण्यासाठी विश्वस्त संस्था स्थापन केली."
+      },
+      {
+        "year": "1978",
+        "title": "पहिले सामुदायिक सभागृह उभारले",
+        "desc": "विवाह, संमेलने आणि शुक्रवारच्या नमाजसाठी कायमस्वरूपी जागा उपलब्ध झाली."
+      },
+      {
+        "year": "1996",
+        "title": "शिक्षण निधी सुरू झाला",
+        "desc": "सदस्य कुटुंबांतील शाळा व महाविद्यालयीन मुलांसाठी शिष्यवृत्ती सुरू झाली."
+      },
+      {
+        "year": "2014",
+        "title": "वैद्यकीय सहाय्य कार्यक्रम",
+        "desc": "उपचार खर्च, दुसरे मत आणि आपत्कालीन काळजीसाठी सुसंघटित सहाय्य सुरू करण्यात आले."
+      },
+      {
+        "year": "2026",
+        "title": "डिजिटल-फर्स्ट जमात",
+        "desc": "सदस्य व्यवस्थापन, ऑनलाइन देणग्या, डिजिटल सदस्यत्व कार्ड, व्यवसाय सूची, कार्यक्रम नोंदणी, सामुदायिक कल्याण सेवा आणि भावी पिढ्यांसाठी सुरक्षित सदस्य पोर्टलसह आधुनिक डिजिटल परिसंस्था सुरू करणे."
+      }
+    ],
+    "president": {
+      "eyebrow": "अध्यक्षांचा संदेश",
+      "quote": "कच्छी मेमन जमात नेर नेहमीच एकता, सेवा, करुणा आणि प्रगतीसाठी उभी राहिली आहे. सकारात्मक बदल स्वीकारताना आपल्या परंपरा जपल्यामुळे आपला समाज अधिक बळकट झाला आहे. समाज मजबूत करण्यात प्रत्येक सदस्याची महत्त्वाची भूमिका आहे. शिक्षण, सामाजिक कल्याण, व्यवसाय सहाय्य आणि परोपकारी उपक्रमांतून आम्ही पुढील पिढ्यांसाठी उज्ज्वल भविष्य घडवण्याचा प्रयत्न करतो. अल्लाह (सुब्हानहू व तआला) आपल्या समाजाला एकता, समृद्धी आणि मानवतेची निष्ठेने सेवा करण्याची क्षमता देत राहो.",
+      "name": "हाजी मुसा टिक्की",
+      "role": "अध्यक्ष, कच्छी मेमन जमात नेर"
+    },
+    "services": {
+      "eyebrow": "आमच्या सेवा",
+      "title": "सुरुवातीपासून शेवटपर्यंत सामुदायिक सेवा",
+      "sub": "पहिल्या प्रस्तावापासून अंतिम दुआपर्यंत — सदस्य कुटुंबांच्या खऱ्या गरजांवर आधारित बारा कार्यक्रम.",
+      "items": [
+        {
+          "title": "विवाह ब्युरो",
+          "desc": "कुटुंब आणि विश्वासाच्या मार्गदर्शनाखाली, समाजांतर्गत पडताळणी केलेले संबंध."
+        },
+        {
+          "title": "शिक्षण शिष्यवृत्ती",
+          "desc": "शालेय, महाविद्यालयीन आणि व्यावसायिक विद्यार्थ्यांसाठी वार्षिक सहाय्य."
+        },
+        {
+          "title": "वैद्यकीय सहाय्य",
+          "desc": "उपचार खर्च सहाय्य, संदर्भ आणि दुसऱ्या मताचे मार्गदर्शन."
+        },
+        {
+          "title": "जकात व परोपकार",
+          "desc": "कल्याण चमूने ओळखलेल्या कुटुंबांसाठी सुसंघटित वितरण."
+        },
+        {
+          "title": "अंत्यसंस्कार सेवा",
+          "desc": "गुस्ल, वाहतूक आणि दफनविधी सन्मानाने हाताळले जातात."
+        },
+        {
+          "title": "सामुदायिक सभागृह बुकिंग",
+          "desc": "विवाह, मजलिस आणि संमेलनांसाठी जमात सभागृह राखीव करा."
+        },
+        {
+          "title": "व्यवसाय सूची",
+          "desc": "विविध व्यवसायांतील सदस्यांच्या मालकीचे व्यवसाय शोधा आणि त्यांना पाठिंबा द्या."
+        },
+        {
+          "title": "युवा विकास",
+          "desc": "पुढील पिढीसाठी मार्गदर्शन, क्रीडा आणि कौशल्य विकास."
+        },
+        {
+          "title": "महिला कल्याण",
+          "desc": "समाजातील महिलांनी चालवलेले शिवणकाम, शिकवणी आणि सहाय्य गट."
+        },
+        {
+          "title": "ज्येष्ठ नागरिक सहाय्य",
+          "desc": "घरभेटी, वैद्यकीय पाठपुरावा आणि सोबतीचे कार्यक्रम."
+        },
+        {
+          "title": "कायदेशीर सहाय्य",
+          "desc": "कौटुंबिक व मालमत्तेच्या प्रकरणांसाठी समाज-पडताळणी केलेला कायदेशीर सल्ला."
+        },
+        {
+          "title": "आपत्कालीन सहाय्य",
+          "desc": "तातडीच्या कौटुंबिक किंवा वैद्यकीय संकटासाठी 24 तास संपर्क सुविधा."
+        }
+      ]
+    },
+    "events": {
+      "eyebrow": "दिनदर्शिकेत नोंद करा",
+      "title": "आगामी कार्यक्रम",
+      "register": "नोंदणी करा",
+      "days": "दिवस",
+      "hrs": "तास",
+      "min": "मिनिट",
+      "sec": "सेकंद",
+      "items": [
+        {
+          "title": "वार्षिक मिलाद-उन-नबी सोहळा",
+          "desc": "व्याख्यान, नशीद आणि भोजनासह समाजव्यापी कार्यक्रम."
+        },
+        {
+          "title": "शिष्यवृत्ती वितरण दिवस",
+          "desc": "या वर्षीच्या शिष्यवृत्तीधारक आणि प्रावीण्य विद्यार्थ्यांचा सत्कार."
+        },
+        {
+          "title": "मोफत वैद्यकीय आरोग्य शिबिर",
+          "desc": "सर्व सदस्यांसाठी सर्वसाधारण तपासणी, नेत्र शिबिर आणि मधुमेह तपासणी."
+        }
+      ]
+    },
+    "announcements": {
+      "eyebrow": "अद्ययावत रहा",
+      "title": "ताज्या घोषणा",
+      "items": [
+        {
+          "date": "02 जुलै 2026",
+          "title": "रमजान मदत निधीची मुदत वाढवली",
+          "desc": "आतापर्यंतच्या प्रतिसादामुळे, ₹10 लाखांचे उद्दिष्ट गाठण्यासाठी समितीने संकलनाची मुदत दोन आठवड्यांनी वाढवली आहे."
+        },
+        {
+          "date": "24 जून 2026",
+          "title": "जमात कार्यालयाच्या नवीन वेळा",
+          "desc": "नोकरदार सदस्यांच्या सोयीसाठी सामुदायिक कार्यालय आता आठवड्याच्या दिवशी संध्याकाळी 6 वाजेपर्यंत सुरू राहील."
+        },
+        {
+          "date": "11 जून 2026",
+          "title": "व्यवसाय सूची आता नोंदणीसाठी खुली",
+          "desc": "सदस्यांच्या मालकीचे व्यवसाय आता सामुदायिक सूचीवर विनामूल्य नोंदणी करू शकतात."
+        }
+      ]
+    },
+    "directory": {
+      "eyebrow": "सदस्य व्यवसाय",
+      "title": "व्यवसाय सूची",
+      "sub": "सहकारी सदस्यांना पाठिंबा द्या — नाव, व्यवसाय किंवा परिसरानुसार शोधा.",
+      "searchPlaceholder": "व्यवसाय किंवा मालकाचे नाव शोधा…",
+      "allCategories": "सर्व श्रेणी",
+      "empty": "तुमच्या शोधाशी जुळणारा कोणताही व्यवसाय नाही — वेगळे नाव किंवा श्रेणी वापरून पहा.",
+      "categories": {
+        "Textiles": "वस्त्रोद्योग",
+        "Healthcare": "आरोग्यसेवा",
+        "Hardware": "हार्डवेअर",
+        "Electronics": "इलेक्ट्रॉनिक्स",
+        "Food & Bakery": "अन्न व बेकरी",
+        "Education": "शिक्षण",
+        "Logistics": "लॉजिस्टिक्स",
+        "Fashion": "फॅशन",
+        "Agriculture": "शेती"
+      }
+    },
+    "gallery": {
+      "eyebrow": "आठवणी",
+      "title": "सामुदायिक गॅलरी",
+      "tabs": [
+        "सर्व",
+        "कार्यक्रम",
+        "परोपकार",
+        "शिक्षण",
+        "कुटुंब"
+      ]
+    },
+    "donate": {
+      "eyebrow": "रमजान मदत निधी",
+      "title": "प्रत्येक रुपया गरजू कुटुंबापर्यंत पोहोचतो.",
+      "desc": "आमच्या कल्याण समितीने ओळखलेल्या कुटुंबांसाठी रेशन किट, वैद्यकीय मदत आणि ईद सहाय्यासाठी 100% देणगी थेट जाते.",
+      "raised": "जमा झाले",
+      "goal": "उद्दिष्ट",
+      "btnDonate": "आता देणगी द्या",
+      "btnOnline": "ऑनलाइन द्या",
+      "qrCaption": "UPI द्वारे देणगी देण्यासाठी स्कॅन करा",
+      "recentDonors": "अलीकडील देणगीदार"
+    },
+    "testimonials": {
+      "eyebrow": "त्यांच्या शब्दांत",
+      "title": "आमचे सदस्य काय म्हणतात",
+      "items": [
+        {
+          "quote": "शिष्यवृत्ती कार्यक्रमाने माझ्या मुलीचे आयुष्य बदलले — आज ती अभियांत्रिकीचे शिक्षण घेत आहे कारण जमातीने आमची ऐपत नसतानाही तिच्यावर विश्वास ठेवला.",
+          "name": "आयेशा आर.",
+          "role": "सदस्य 2009 पासून"
+        },
+        {
+          "quote": "माझ्या वडिलांना तातडीने शस्त्रक्रियेची गरज होती तेव्हा वैद्यकीय सहाय्य डेस्कने दोन दिवसांत निधीची व्यवस्था केली. असे सहाय्य क्वचितच मिळते.",
+          "name": "कैफ एम.",
+          "role": "सदस्य 2015 पासून"
+        },
+        {
+          "quote": "व्यवसाय सूचीत माझे दुकान नोंदवल्याने मला असे ग्राहक मिळाले जे मी स्वतः कधीच गाठू शकलो नसतो. समाज खरोखर आपल्या माणसांची काळजी घेतो.",
+          "name": "सादिया टी.",
+          "role": "सदस्य 2018 पासून"
+        }
+      ]
+    },
+    "leadership": {
+      "eyebrow": "नेतृत्व",
+      "title": "जमातीमागील माणसे",
+      "sub": "75 वर्षांचा सामुदायिक विश्वास पुढे नेणारे निवडून आलेले विश्वस्त.",
+      "committeeGridTitle": "व्यवस्थापन समिती सदस्य",
+      "roles": {
+        "President": "अध्यक्ष",
+        "Vice President": "उपाध्यक्ष",
+        "Secretary": "सचिव",
+        "Treasurer": "कोषाध्यक्ष",
+        "Committee Member": "समिती सदस्य"
+      }
+    },
+    "modules": {
+      "eyebrow": "पोर्टलवर लवकरच",
+      "title": "डिजिटल जमात घडवताना",
+      "sub": "सक्रिय विकासात एकोणीस मॉड्यूल्स — समाजाच्या प्रत्येक सेवेसाठी एकच लॉगिन.",
+      "items": [
+        {
+          "title": "सदस्य लॉगिन",
+          "tag": "तिमाही 3, 2026"
+        },
+        {
+          "title": "डिजिटल सदस्यत्व कार्ड",
+          "tag": "तिमाही 3, 2026"
+        },
+        {
+          "title": "ऑनलाइन नोंदणी",
+          "tag": "तिमाही 3, 2026"
+        },
+        {
+          "title": "वैवाहिक पोर्टल",
+          "tag": "तिमाही 4, 2026"
+        },
+        {
+          "title": "शिष्यवृत्ती पोर्टल",
+          "tag": "तिमाही 4, 2026"
+        },
+        {
+          "title": "वैद्यकीय सहाय्य पोर्टल",
+          "tag": "तिमाही 4, 2026"
+        },
+        {
+          "title": "रक्तदाता सूची",
+          "tag": "तिमाही 4, 2026"
+        },
+        {
+          "title": "अंत्यसंस्कार व्यवस्थापन",
+          "tag": "2027"
+        },
+        {
+          "title": "सामुदायिक सभागृह बुकिंग",
+          "tag": "2027"
+        },
+        {
+          "title": "व्यवसाय सूची",
+          "tag": "लाइव्ह"
+        },
+        {
+          "title": "स्वयंसेवक नोंदणी",
+          "tag": "2027"
+        },
+        {
+          "title": "तक्रार व सूचना पोर्टल",
+          "tag": "2027"
+        },
+        {
+          "title": "नोकरी पोर्टल",
+          "tag": "2027"
+        },
+        {
+          "title": "कुटुंब सूची",
+          "tag": "2027"
+        },
+        {
+          "title": "दस्तऐवज डाउनलोड",
+          "tag": "2027"
+        },
+        {
+          "title": "कार्यक्रम नोंदणी",
+          "tag": "तिमाही 3, 2026"
+        },
+        {
+          "title": "देणगी इतिहास",
+          "tag": "तिमाही 4, 2026"
+        },
+        {
+          "title": "समिती डॅशबोर्ड",
+          "tag": "2027"
+        },
+        {
+          "title": "प्रशासक डॅशबोर्ड",
+          "tag": "2027"
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "प्रश्न",
+      "title": "वारंवार विचारले जाणारे प्रश्न",
+      "items": [
+        {
+          "q": "जमातीचे सदस्य होण्यास कोण पात्र आहे?",
+          "a": "नेरमध्ये राहणारे किंवा नेरशी संबंधित कोणतेही कच्छी मेमन कुटुंब नोंदणी डेस्कवर किंवा आगामी ऑनलाइन पोर्टलद्वारे सदस्यत्वासाठी अर्ज करू शकते."
+        },
+        {
+          "q": "जकात आणि परोपकार निधीचे वितरण कसे होते?",
+          "a": "कल्याण समिती घरभेटी आणि सामुदायिक संदर्भांद्वारे पात्र कुटुंबे ओळखते, नंतर पूर्ण पारदर्शकतेने दरमहा निधी वितरित करते."
+        },
+        {
+          "q": "सदस्य नसलेले व्यक्ती त्यांचा व्यवसाय सूचीत नोंदवू शकतात का?",
+          "a": "सध्या ही सूची फक्त सदस्यांच्या मालकीच्या व्यवसायांसाठी राखीव आहे. जमात कार्यालयाला एकाच भेटीत सदस्यत्व पूर्ण करता येते."
+        },
+        {
+          "q": "वैद्यकीय सहाय्य अनुदानासाठी अर्ज कसा करावा?",
+          "a": "वैद्यकीय कागदपत्रे आणि अंदाजपत्रक कार्यालयात जमा करा, किंवा पोर्टल सुरू झाल्यावर वैद्यकीय सहाय्य पोर्टलद्वारे — समिती साधारणतः 48 तासांत प्रतिसाद देते."
+        }
+      ]
+    },
+    "contact": {
+      "eyebrow": "आमच्याशी संपर्क साधा",
+      "title": "संपर्कात रहा",
+      "mapPlaceholder": "नकाशा प्लेसहोल्डर — जमात नेर सामुदायिक सभागृह",
+      "address": "जमात सामुदायिक सभागृह, मुख्य रस्ता, नेर, यवतमाळ जिल्हा, महाराष्ट्र 445204",
+      "hours": "सोम – शनि, सकाळी 10:00 – सायं 6:00",
+      "formName": "पूर्ण नाव",
+      "formPhone": "फोन नंबर",
+      "formEmail": "ईमेल पत्ता",
+      "formMessage": "आम्ही तुम्हाला कशी मदत करू शकतो?",
+      "formSubmit": "संदेश पाठवा",
+      "formSuccess": "संदेश पाठवला — हा एक प्लेसहोल्डर फॉर्म आहे."
+    },
+    "footer": {
+      "tagline": "1949 पासून श्रद्धा, एकता आणि प्रगतीने समाजाची सेवा.",
+      "prayerTimes": "नमाजाच्या वेळा",
+      "prayers": [
+        "फज्र",
+        "जुहर",
+        "असर",
+        "मगरिब",
+        "इशा"
+      ],
+      "quickLinks": "जलद दुवे",
+      "quickLinksItems": [
+        "जमातीबद्दल",
+        "सामुदायिक सेवा",
+        "व्यवसाय सूची",
+        "देणग्या",
+        "संपर्क करा"
+      ],
+      "newsletter": "वृत्तपत्रिका",
+      "newsletterDesc": "कार्यक्रम, कल्याण मोहिमा आणि जमातीच्या बातम्यांचे मासिक अपडेट.",
+      "newsletterPlaceholder": "तुमचा ईमेल",
+      "newsletterBtn": "सामील व्हा",
+      "newsletterSuccess": "सदस्यता घेतली — हा एक प्लेसहोल्डर आहे.",
+      "copyright": "© 2026 कच्छी मेमन जमात नेर. सर्व हक्क राखीव.",
+      "builtWith": "समाजासाठी काळजीने तयार केले."
+    },
+    "misc": {
+      "darkModeAria": "डार्क मोड बदला",
+      "menuAria": "मेनू उघडा"
+    }
+  },
+  "gu": {
+    "meta": {
+      "code": "gu",
+      "label": "ગુજરાતી",
+      "flag": "🇮🇳"
+    },
+    "nav": {
+      "about": "અમારા વિશે",
+      "services": "સેવાઓ",
+      "events": "કાર્યક્રમો",
+      "directory": "વ્યવસાય યાદી",
+      "gallery": "ગેલેરી",
+      "leadership": "નેતૃત્વ",
+      "donate": "દાન કરો",
+      "contact": "સંપર્ક કરો"
+    },
+    "hero": {
+      "eyebrow": "સ્થાપના 1949 · નેર, મહારાષ્ટ્ર",
+      "titleLine1": "કચ્છી મેમણ",
+      "titleLine2": "જમાત નેર",
+      "sub": "75 વર્ષોથી અને આવનારી પેઢીઓ માટે — શ્રદ્ધા, એકતા અને પ્રગતિ સાથે સમુદાયની સેવા.",
+      "btnMember": "સભ્ય બનો",
+      "btnDonate": "હમણાં દાન કરો",
+      "btnEvents": "આગામી કાર્યક્રમો",
+      "statMembers": "સભ્યો",
+      "statYears": "સેવાના વર્ષો",
+      "statFamilies": "પરિવારો",
+      "statStudents": "સહાયિત વિદ્યાર્થીઓ",
+      "statWelfare": "સામુદાયિક કલ્યાણ"
+    },
+    "about": {
+      "eyebrow": "અમારી કહાણી",
+      "title": "વિશ્વાસ પર બંધાયેલ, સેવાથી આગળ વધતો સમુદાય.",
+      "sub": "કચ્છી મેમણ જમાત નેર સાત દાયકાથી વધુ સમયથી નેરના મુસ્લિમ સમુદાયના કેન્દ્રમાં ઊભી છે — એ સાદા વિચાર પર રચાયેલો ટ્રસ્ટ કે કોઈ પણ સભ્યને મુશ્કેલી, શિક્ષણ કે તકની ખોટ એકલા સહન ન કરવી પડે. વેપારીઓ અને પરિવારોના નાના જૂથથી શરૂ થયેલી આ સંસ્થા આજે લગ્ન, તબીબી, શિક્ષણ અને વ્યવસાય સુધી ફેલાયેલી સંપૂર્ણ કલ્યાણ સંસ્થા બની ગઈ છે.",
+      "pillars": [
+        "એકતા",
+        "શિક્ષણ",
+        "દાનધર્મ",
+        "વ્યવસાય વૃદ્ધિ",
+        "સામાજિક કલ્યાણ",
+        "યુવા વિકાસ"
+      ]
+    },
+    "timeline": [
+      {
+        "year": "1949",
+        "title": "જમાતની સ્થાપના",
+        "desc": "થોડાક પરિવારોએ વેપાર, શ્રદ્ધા અને કલ્યાણ દ્વારા એકબીજાને ટેકો આપવા માટે ટ્રસ્ટની રચના કરી."
+      },
+      {
+        "year": "1978",
+        "title": "પ્રથમ સામુદાયિક હોલ બન્યો",
+        "desc": "લગ્નો, મેળાવડાઓ અને શુક્રવારની નમાઝ માટે કાયમી સ્થળ ખુલ્યું."
+      },
+      {
+        "year": "1996",
+        "title": "શિક્ષણ ફંડ શરૂ થયું",
+        "desc": "સભ્ય પરિવારોના શાળા અને કોલેજમાં ભણતાં બાળકો માટે શિષ્યવૃત્તિ શરૂ થઈ."
+      },
+      {
+        "year": "2014",
+        "title": "તબીબી સહાય કાર્યક્રમ",
+        "desc": "સારવાર ખર્ચ, બીજા અભિપ્રાય અને કટોકટીની સંભાળ માટે વ્યવસ્થિત સહાય શરૂ કરવામાં આવી."
+      },
+      {
+        "year": "2026",
+        "title": "ડિજિટલ-ફર્સ્ટ જમાત",
+        "desc": "સભ્ય વ્યવસ્થાપન, ઓનલાઇન દાન, ડિજિટલ સભ્યપદ કાર્ડ, વ્યવસાય યાદી, કાર્યક્રમ નોંધણી, સામુદાયિક કલ્યાણ સેવાઓ અને ભાવિ પેઢીઓ માટે સુરક્ષિત સભ્ય પોર્ટલ સાથે આધુનિક ડિજિટલ ઇકોસિસ્ટમ શરૂ કરવી."
+      }
+    ],
+    "president": {
+      "eyebrow": "અધ્યક્ષનો સંદેશ",
+      "quote": "કચ્છી મેમણ જમાત નેર હંમેશા એકતા, સેવા, કરુણા અને પ્રગતિ માટે ઊભી રહી છે. હકારાત્મક પરિવર્તનને અપનાવતાં અમારી પરંપરાઓ જાળવવાથી અમારો સમુદાય વધુ મજબૂત બન્યો છે. સમાજને મજબૂત બનાવવામાં દરેક સભ્યની મહત્વની ભૂમિકા છે. શિક્ષણ, સામાજિક કલ્યાણ, વ્યવસાય સહાય અને દાનધર્મના પ્રયાસો દ્વારા, અમે આવનારી પેઢીઓ માટે ઉજ્જવળ ભવિષ્ય બનાવવાનો પ્રયત્ન કરીએ છીએ. અલ્લાહ (સુબ્હાનહુ વ તઆલા) અમારા સમુદાયને એકતા, સમૃદ્ધિ અને માનવતાની નિષ્ઠાપૂર્વક સેવા કરવાની ક્ષમતાથી નવાજતા રહે.",
+      "name": "હાજી મુસા ટીક્કી",
+      "role": "અધ્યક્ષ, કચ્છી મેમણ જમાત નેર"
+    },
+    "services": {
+      "eyebrow": "અમારી સેવાઓ",
+      "title": "શરૂઆતથી અંત સુધી સામુદાયિક સેવાઓ",
+      "sub": "પ્રથમ દરખાસ્તથી છેલ્લી દુઆ સુધી — સભ્ય પરિવારોની વાસ્તવિક જરૂરિયાતો પર આધારિત બાર કાર્યક્રમો.",
+      "items": [
+        {
+          "title": "લગ્ન બ્યુરો",
+          "desc": "કુટુંબ અને વિશ્વાસના માર્ગદર્શન હેઠળ, સમુદાયમાં ચકાસાયેલા સંબંધો."
+        },
+        {
+          "title": "શિક્ષણ શિષ્યવૃત્તિ",
+          "desc": "શાળા, કોલેજ અને વ્યવસાયલક્ષી વિદ્યાર્થીઓ માટે વાર્ષિક સહાય."
+        },
+        {
+          "title": "તબીબી સહાય",
+          "desc": "સારવાર ખર્ચ સહાય, રેફરલ અને બીજા અભિપ્રાયનું માર્ગદર્શન."
+        },
+        {
+          "title": "ઝકાત અને દાનધર્મ",
+          "desc": "કલ્યાણ ટીમ દ્વારા ઓળખાયેલા પરિવારો માટે વ્યવસ્થિત વિતરણ."
+        },
+        {
+          "title": "અંતિમ સંસ્કાર સેવાઓ",
+          "desc": "ગુસ્લ, પરિવહન અને દફનવિધિ સન્માનપૂર્વક સંભાળવામાં આવે છે."
+        },
+        {
+          "title": "સામુદાયિક હોલ બુકિંગ",
+          "desc": "લગ્ન, મજલિસ અને મેળાવડાઓ માટે જમાત હોલ આરક્ષિત કરો."
+        },
+        {
+          "title": "વ્યવસાય યાદી",
+          "desc": "વિવિધ વ્યવસાયોમાં સભ્યોની માલિકીના વ્યવસાયો શોધો અને તેમને ટેકો આપો."
+        },
+        {
+          "title": "યુવા વિકાસ",
+          "desc": "આગામી પેઢી માટે માર્ગદર્શન, રમતગમત અને કૌશલ્ય નિર્માણ."
+        },
+        {
+          "title": "મહિલા કલ્યાણ",
+          "desc": "સમુદાયની મહિલાઓ દ્વારા સંચાલિત સિલાઈ, ટ્યુશન અને સહાય જૂથો."
+        },
+        {
+          "title": "વરિષ્ઠ નાગરિક સહાય",
+          "desc": "ઘરની મુલાકાત, તબીબી ફોલો-અપ અને સાથસહકારના કાર્યક્રમો."
+        },
+        {
+          "title": "કાનૂની સહાય",
+          "desc": "કૌટુંબિક અને મિલકતના મામલાઓ માટે સમુદાય-ચકાસાયેલ કાનૂની સલાહ."
+        },
+        {
+          "title": "કટોકટી સહાય",
+          "desc": "તાત્કાલિક કૌટુંબિક કે તબીબી કટોકટી માટે 24 કલાક સંપર્ક સુવિધા."
+        }
+      ]
+    },
+    "events": {
+      "eyebrow": "કેલેન્ડરમાં નોંધો",
+      "title": "આગામી કાર્યક્રમો",
+      "register": "નોંધણી કરો",
+      "days": "દિવસ",
+      "hrs": "કલાક",
+      "min": "મિનિટ",
+      "sec": "સેકન્ડ",
+      "items": [
+        {
+          "title": "વાર્ષિક મિલાદ-ઉન-નબી સભા",
+          "desc": "વ્યાખ્યાન, નશીદ અને ભોજન સાથે સમુદાયવ્યાપી કાર્યક્રમ."
+        },
+        {
+          "title": "શિષ્યવૃત્તિ વિતરણ દિવસ",
+          "desc": "આ વર્ષના શિષ્યવૃત્તિ મેળવનારાઓ અને ટોપર્સનું સન્માન."
+        },
+        {
+          "title": "મફત તબીબી આરોગ્ય શિબિર",
+          "desc": "તમામ સભ્યો માટે સામાન્ય તપાસ, આંખની શિબિર અને ડાયાબિટીસ તપાસ."
+        }
+      ]
+    },
+    "announcements": {
+      "eyebrow": "અપડેટ રહો",
+      "title": "તાજેતરની જાહેરાતો",
+      "items": [
+        {
+          "date": "02 જુલાઈ 2026",
+          "title": "રમઝાન રાહત ફંડની મુદત વધારી",
+          "desc": "અત્યાર સુધીના પ્રતિસાદને જોતાં, સમિતિએ ₹10 લાખના લક્ષ્ય સુધી પહોંચવા માટે સંગ્રહની મુદત બે અઠવાડિયા વધારી છે."
+        },
+        {
+          "date": "24 જૂન 2026",
+          "title": "જમાત કાર્યાલયના નવા સમય",
+          "desc": "કામ કરતા સભ્યોની સુવિધા માટે સામુદાયિક કાર્યાલય હવે અઠવાડિયાના દિવસોમાં સાંજે 6 વાગ્યા સુધી ખુલ્લું રહેશે."
+        },
+        {
+          "date": "11 જૂન 2026",
+          "title": "વ્યવસાય યાદી હવે નોંધણી માટે ખુલ્લી",
+          "desc": "સભ્યોની માલિકીના વ્યવસાયો હવે સામુદાયિક યાદીમાં મફત નોંધણી માટે અરજી કરી શકે છે."
+        }
+      ]
+    },
+    "directory": {
+      "eyebrow": "સભ્ય વ્યવસાયો",
+      "title": "વ્યવસાય યાદી",
+      "sub": "સાથી સભ્યોને ટેકો આપો — નામ, વ્યવસાય અથવા વિસ્તાર દ્વારા શોધો.",
+      "searchPlaceholder": "વ્યવસાય અથવા માલિકનું નામ શોધો…",
+      "allCategories": "બધી શ્રેણીઓ",
+      "empty": "તમારી શોધ સાથે કોઈ વ્યવસાય મેળ ખાતો નથી — અલગ નામ અથવા શ્રેણી અજમાવો.",
+      "categories": {
+        "Textiles": "કાપડ",
+        "Healthcare": "આરોગ્ય સેવા",
+        "Hardware": "હાર્ડવેર",
+        "Electronics": "ઇલેક્ટ્રોનિક્સ",
+        "Food & Bakery": "ખોરાક અને બેકરી",
+        "Education": "શિક્ષણ",
+        "Logistics": "લોજિસ્ટિક્સ",
+        "Fashion": "ફેશન",
+        "Agriculture": "ખેતી"
+      }
+    },
+    "gallery": {
+      "eyebrow": "યાદગાર પળો",
+      "title": "સામુદાયિક ગેલેરી",
+      "tabs": [
+        "બધું",
+        "કાર્યક્રમો",
+        "દાનધર્મ",
+        "શિક્ષણ",
+        "પરિવાર"
+      ]
+    },
+    "donate": {
+      "eyebrow": "રમઝાન રાહત ફંડ",
+      "title": "દરેક રૂપિયો જરૂરિયાતમંદ પરિવાર સુધી પહોંચે છે.",
+      "desc": "અમારી કલ્યાણ સમિતિ દ્વારા ઓળખાયેલા પરિવારો માટે રાશન કિટ, તબીબી સહાય અને ઈદ સહાયમાં 100% યોગદાન સીધું જાય છે.",
+      "raised": "એકત્રિત",
+      "goal": "લક્ષ્ય",
+      "btnDonate": "હમણાં દાન કરો",
+      "btnOnline": "ઓનલાઇન દાન કરો",
+      "qrCaption": "UPI દ્વારા દાન કરવા સ્કેન કરો",
+      "recentDonors": "તાજેતરના દાતાઓ"
+    },
+    "testimonials": {
+      "eyebrow": "તેમના શબ્દોમાં",
+      "title": "અમારા સભ્યો શું કહે છે",
+      "items": [
+        {
+          "quote": "શિષ્યવૃત્તિ કાર્યક્રમે મારી દીકરીનું જીવન બદલી નાખ્યું — આજે તે એન્જિનિયરિંગ ભણી રહી છે કારણ કે અમે પોસાય તે પહેલાં જમાતે તેના પર વિશ્વાસ મૂક્યો.",
+          "name": "આયેશા આર.",
+          "role": "2009થી સભ્ય"
+        },
+        {
+          "quote": "જ્યારે મારા પિતાને તાત્કાલિક શસ્ત્રક્રિયાની જરૂર પડી, ત્યારે તબીબી સહાય ડેસ્કે બે દિવસમાં ભંડોળની વ્યવસ્થા કરી દીધી. આવો ટેકો ભાગ્યે જ ક્યાંય મળે છે.",
+          "name": "કૈફ એમ.",
+          "role": "2015થી સભ્ય"
+        },
+        {
+          "quote": "વ્યવસાય યાદીમાં મારી દુકાન નોંધાવવાથી મને એવા ગ્રાહકો મળ્યા જેમના સુધી હું એકલો ક્યારેય પહોંચી ન શકત. સમુદાય ખરેખર પોતાનાની કાળજી રાખે છે.",
+          "name": "સાદિયા ટી.",
+          "role": "2018થી સભ્ય"
+        }
+      ]
+    },
+    "leadership": {
+      "eyebrow": "નેતૃત્વ",
+      "title": "જમાત પાછળના લોકો",
+      "sub": "75 વર્ષના સામુદાયિક વિશ્વાસને આગળ ધપાવતા ચૂંટાયેલા ટ્રસ્ટીઓ.",
+      "committeeGridTitle": "મેનેજિંગ કમિટી સભ્યો",
+      "roles": {
+        "President": "અધ્યક્ષ",
+        "Vice President": "ઉપાધ્યક્ષ",
+        "Secretary": "સચિવ",
+        "Treasurer": "કોષાધ્યક્ષ",
+        "Committee Member": "સમિતિ સભ્ય"
+      }
+    },
+    "modules": {
+      "eyebrow": "પોર્ટલ પર ટૂંક સમયમાં",
+      "title": "ડિજિટલ જમાતનું નિર્માણ",
+      "sub": "સક્રિય વિકાસમાં ઓગણીસ મોડ્યુલ્સ — સમુદાયની દરેક સેવા માટે એક જ લોગિન.",
+      "items": [
+        {
+          "title": "સભ્ય લોગિન",
+          "tag": "ત્રિમાસિક 3, 2026"
+        },
+        {
+          "title": "ડિજિટલ સભ્યપદ કાર્ડ",
+          "tag": "ત્રિમાસિક 3, 2026"
+        },
+        {
+          "title": "ઓનલાઇન નોંધણી",
+          "tag": "ત્રિમાસિક 3, 2026"
+        },
+        {
+          "title": "વૈવાહિક પોર્ટલ",
+          "tag": "ત્રિમાસિક 4, 2026"
+        },
+        {
+          "title": "શિષ્યવૃત્તિ પોર્ટલ",
+          "tag": "ત્રિમાસિક 4, 2026"
+        },
+        {
+          "title": "તબીબી સહાય પોર્ટલ",
+          "tag": "ત્રિમાસિક 4, 2026"
+        },
+        {
+          "title": "રક્તદાતા યાદી",
+          "tag": "ત્રિમાસિક 4, 2026"
+        },
+        {
+          "title": "અંતિમ સંસ્કાર વ્યવસ્થાપન",
+          "tag": "2027"
+        },
+        {
+          "title": "સામુદાયિક હોલ બુકિંગ",
+          "tag": "2027"
+        },
+        {
+          "title": "વ્યવસાય યાદી",
+          "tag": "લાઇવ"
+        },
+        {
+          "title": "સ્વયંસેવક નોંધણી",
+          "tag": "2027"
+        },
+        {
+          "title": "ફરિયાદ અને સૂચન પોર્ટલ",
+          "tag": "2027"
+        },
+        {
+          "title": "નોકરી પોર્ટલ",
+          "tag": "2027"
+        },
+        {
+          "title": "પરિવાર યાદી",
+          "tag": "2027"
+        },
+        {
+          "title": "દસ્તાવેજ ડાઉનલોડ",
+          "tag": "2027"
+        },
+        {
+          "title": "કાર્યક્રમ નોંધણી",
+          "tag": "ત્રિમાસિક 3, 2026"
+        },
+        {
+          "title": "દાન ઇતિહાસ",
+          "tag": "ત્રિમાસિક 4, 2026"
+        },
+        {
+          "title": "સમિતિ ડેશબોર્ડ",
+          "tag": "2027"
+        },
+        {
+          "title": "એડમિન ડેશબોર્ડ",
+          "tag": "2027"
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "પ્રશ્નો",
+      "title": "વારંવાર પુછાતા પ્રશ્નો",
+      "items": [
+        {
+          "q": "જમાતના સભ્ય બનવા માટે કોણ પાત્ર છે?",
+          "a": "નેરમાં રહેતો અથવા નેર સાથે જોડાયેલો કોઈ પણ કચ્છી મેમણ પરિવાર નોંધણી ડેસ્ક દ્વારા અથવા આગામી ઓનલાઇન પોર્ટલ દ્વારા સભ્યપદ માટે અરજી કરી શકે છે."
+        },
+        {
+          "q": "ઝકાત અને દાનધર્મ ફંડનું વિતરણ કેવી રીતે થાય છે?",
+          "a": "કલ્યાણ સમિતિ ઘરની મુલાકાત અને સામુદાયિક સંદર્ભો દ્વારા પાત્ર પરિવારોને ઓળખે છે, પછી સંપૂર્ણ પારદર્શિતા સાથે માસિક ધોરણે ભંડોળ વહેંચે છે."
+        },
+        {
+          "q": "શું બિન-સભ્યો તેમનો વ્યવસાય યાદીમાં નોંધાવી શકે?",
+          "a": "હાલમાં આ યાદી ફક્ત સભ્યોની માલિકીના વ્યવસાયો માટે આરક્ષિત છે. જમાત કાર્યાલયની એક જ મુલાકાતમાં સભ્યપદ પૂર્ણ કરી શકાય છે."
+        },
+        {
+          "q": "તબીબી સહાય અનુદાન માટે કેવી રીતે અરજી કરવી?",
+          "a": "તબીબી દસ્તાવેજો અને અંદાજો કાર્યાલયમાં સુપરત કરો અથવા, લાઇવ થયા પછી, તબીબી સહાય પોર્ટલ દ્વારા — સમિતિ સામાન્ય રીતે 48 કલાકમાં જવાબ આપે છે."
+        }
+      ]
+    },
+    "contact": {
+      "eyebrow": "અમારો સંપર્ક કરો",
+      "title": "સંપર્કમાં રહો",
+      "mapPlaceholder": "નકશા પ્લેસહોલ્ડર — જમાત નેર સામુદાયિક હોલ",
+      "address": "જમાત સામુદાયિક હોલ, મુખ્ય રસ્તો, નેર, યવતમાળ જિલ્લો, મહારાષ્ટ્ર 445204",
+      "hours": "સોમ – શનિ, સવારે 10:00 – સાંજે 6:00",
+      "formName": "પૂરું નામ",
+      "formPhone": "ફોન નંબર",
+      "formEmail": "ઈમેલ સરનામું",
+      "formMessage": "અમે તમને કેવી રીતે મદદ કરી શકીએ?",
+      "formSubmit": "સંદેશ મોકલો",
+      "formSuccess": "સંદેશ મોકલાયો — આ એક પ્લેસહોલ્ડર ફોર્મ છે."
+    },
+    "footer": {
+      "tagline": "1949થી શ્રદ્ધા, એકતા અને પ્રગતિ સાથે સમુદાયની સેવા.",
+      "prayerTimes": "નમાઝના સમય",
+      "prayers": [
+        "ફજર",
+        "ઝુહર",
+        "અસર",
+        "મગરિબ",
+        "ઇશા"
+      ],
+      "quickLinks": "ઝડપી લિંક્સ",
+      "quickLinksItems": [
+        "જમાત વિશે",
+        "સામુદાયિક સેવાઓ",
+        "વ્યવસાય યાદી",
+        "દાન",
+        "સંપર્ક કરો"
+      ],
+      "newsletter": "ન્યૂઝલેટર",
+      "newsletterDesc": "કાર્યક્રમો, કલ્યાણ ઝુંબેશો અને જમાતના સમાચાર પર માસિક અપડેટ.",
+      "newsletterPlaceholder": "તમારો ઈમેલ",
+      "newsletterBtn": "જોડાઓ",
+      "newsletterSuccess": "સબ્સ્ક્રાઇબ થયું — આ એક પ્લેસહોલ્ડર છે.",
+      "copyright": "© 2026 કચ્છી મેમણ જમાત નેર. બધા હકો આરક્ષિત.",
+      "builtWith": "સમુદાય માટે કાળજીથી બનાવેલ."
+    },
+    "misc": {
+      "darkModeAria": "ડાર્ક મોડ બદલો",
+      "menuAria": "મેનૂ ખોલો"
+    }
+  }
+};
+</script>
 
 <!-- ================= NAV ================= -->
 <header class="nav" id="mainNav">
   <div class="container nav-inner">
     <div class="brand"><span class="brand-mark"><span class="star-motif"></span></span> Kachchi Memon Jamat Ner</div>
     <nav class="nav-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#events">Events</a>
-      <a href="#directory">Directory</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#leadership">Leadership</a>
-      <a href="#donate">Donate</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#events" data-i18n="nav.events">Events</a>
+      <a href="#directory" data-i18n="nav.directory">Directory</a>
+      <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+      <a href="#leadership" data-i18n="nav.leadership">Leadership</a>
+      <a href="#donate" data-i18n="nav.donate">Donate</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
     <div class="nav-actions">
       <div class="lang-switch" id="langSwitch">
@@ -612,45 +2216,45 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
           <button data-flag="🇮🇳" data-code="GU">🇮🇳 ગુજરાતી</button>
         </div>
       </div>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <button class="theme-toggle" id="themeToggle" data-i18n-aria="misc.darkModeAria" aria-label="Toggle dark mode">
         <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
       </button>
-      <a href="#donate" class="btn btn-gold btn-sm" style="display:none" id="navDonateDesktop">Donate</a>
-      <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span></button>
+      <a href="#donate" class="btn btn-gold btn-sm" style="display:none" id="navDonateDesktop" data-i18n="nav.donate">Donate</a>
+      <button class="burger" id="burgerBtn" data-i18n-aria="misc.menuAria" aria-label="Open menu"><span></span></button>
     </div>
   </div>
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" id="mobileClose">✕</button>
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#events">Events</a>
-  <a href="#directory">Directory</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#leadership">Leadership</a>
-  <a href="#donate">Donate</a>
-  <a href="#contact">Contact</a>
+  <a href="#about" data-i18n="nav.about">About</a>
+  <a href="#services" data-i18n="nav.services">Services</a>
+  <a href="#events" data-i18n="nav.events">Events</a>
+  <a href="#directory" data-i18n="nav.directory">Directory</a>
+  <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+  <a href="#leadership" data-i18n="nav.leadership">Leadership</a>
+  <a href="#donate" data-i18n="nav.donate">Donate</a>
+  <a href="#contact" data-i18n="nav.contact">Contact</a>
 </div>
 
 <!-- ================= HERO ================= -->
 <section class="hero">
   <div class="hero-pattern"></div>
   <div class="container hero-inner">
-    <div class="hero-eyebrow"><span class="star-motif" style="background:var(--gold-bright); width:12px;height:12px;"></span> Est. 1949 · Ner, Maharashtra</div>
-    <h1>Kachchi Memon<br><em>Jamat Ner</em></h1>
-    <p class="hero-sub">Serving the community with faith, unity &amp; progress — for 75 years and the generations still to come.</p>
+    <div class="hero-eyebrow"><span class="star-motif" style="background:var(--gold-bright); width:12px;height:12px;"></span> <span data-i18n="hero.eyebrow">Est. 1949 · Ner, Maharashtra</span></div>
+    <h1><span data-i18n="hero.titleLine1">Kachchi Memon</span><br><em data-i18n="hero.titleLine2">Jamat Ner</em></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Serving the community with faith, unity &amp; progress — for 75 years and the generations still to come.</p>
     <div class="hero-actions">
-      <a href="#directory" class="btn btn-gold">Become a Member</a>
-      <a href="#donate" class="btn btn-primary" style="background:#F8F5EC; color:var(--emerald-deep);">Donate Now</a>
-      <a href="#events" class="btn btn-ghost" style="border-color:rgba(255,255,255,.25); color:#F8F5EC;">Upcoming Events</a>
+      <a href="#directory" class="btn btn-gold" data-i18n="hero.btnMember">Become a Member</a>
+      <a href="#donate" class="btn btn-primary" style="background:#F8F5EC; color:var(--emerald-deep);" data-i18n="hero.btnDonate">Donate Now</a>
+      <a href="#events" class="btn btn-ghost" style="border-color:rgba(255,255,255,.25); color:#F8F5EC;" data-i18n="hero.btnEvents">Upcoming Events</a>
     </div>
     <div class="hero-stats hero-stats-5">
-      <div class="hero-stat"><div class="num" data-count="5000">0</div><div class="lbl">Members</div></div>
-      <div class="hero-stat"><div class="num" data-count="75">0</div><div class="lbl">Years of Service</div></div>
-      <div class="hero-stat"><div class="num" data-count="250">0</div><div class="lbl">Families</div></div>
-      <div class="hero-stat"><div class="num" data-count="1200">0</div><div class="lbl">Students Supported</div></div>
-      <div class="hero-stat"><div class="num" data-prefix="₹" data-count="2" data-suffix=" Cr+">0</div><div class="lbl">Community Welfare</div></div>
+      <div class="hero-stat"><div class="num" data-count="5000">0</div><div class="lbl" data-i18n="hero.statMembers">Members</div></div>
+      <div class="hero-stat"><div class="num" data-count="75">0</div><div class="lbl" data-i18n="hero.statYears">Years of Service</div></div>
+      <div class="hero-stat"><div class="num" data-count="250">0</div><div class="lbl" data-i18n="hero.statFamilies">Families</div></div>
+      <div class="hero-stat"><div class="num" data-count="1200">0</div><div class="lbl" data-i18n="hero.statStudents">Students Supported</div></div>
+      <div class="hero-stat"><div class="num" data-prefix="₹" data-count="2" data-suffix=" Cr+">0</div><div class="lbl" data-i18n="hero.statWelfare">Community Welfare</div></div>
     </div>
   </div>
 </section>
@@ -660,25 +2264,12 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
   <div class="container">
     <div class="about-grid">
       <div class="reveal">
-        <div class="eyebrow">Our Story</div>
-        <h2 class="section-title">A community built on trust,<br>carried forward by service.</h2>
-        <p class="section-sub">Kachchi Memon Jamat Ner has stood at the heart of Ner's Muslim community for over seven decades — a trust founded on the simple idea that no member should face hardship, education, or opportunity alone. What began as a small gathering of traders and families has grown into a full welfare institution spanning marriage, medicine, education, and enterprise.</p>
-        <div class="pillars">
-          <div class="pillar"><span class="star-motif"></span><span>Unity</span></div>
-          <div class="pillar"><span class="star-motif"></span><span>Education</span></div>
-          <div class="pillar"><span class="star-motif"></span><span>Charity</span></div>
-          <div class="pillar"><span class="star-motif"></span><span>Business Growth</span></div>
-          <div class="pillar"><span class="star-motif"></span><span>Social Welfare</span></div>
-          <div class="pillar"><span class="star-motif"></span><span>Youth Development</span></div>
-        </div>
+        <div class="eyebrow" data-i18n="about.eyebrow">Our Story</div>
+        <h2 class="section-title" data-i18n="about.title">A community built on trust, carried forward by service.</h2>
+        <p class="section-sub" data-i18n="about.sub">Kachchi Memon Jamat Ner has stood at the heart of Ner's Muslim community for over seven decades — a trust founded on the simple idea that no member should face hardship, education, or opportunity alone. What began as a small gathering of traders and families has grown into a full welfare institution spanning marriage, medicine, education, and enterprise.</p>
+        <div class="pillars" id="pillarsGrid"></div>
       </div>
-      <div class="timeline reveal">
-        <div class="tl-item"><div class="tl-year">1949</div><h4>The Jamat is founded</h4><p>A handful of families formalise a trust to support one another through trade, faith, and welfare.</p></div>
-        <div class="tl-item"><div class="tl-year">1978</div><h4>First community hall built</h4><p>A permanent home for weddings, gatherings, and Friday congregations opens its doors.</p></div>
-        <div class="tl-item"><div class="tl-year">1996</div><h4>Education fund launched</h4><p>Scholarships begin supporting school and college-going children across member families.</p></div>
-        <div class="tl-item"><div class="tl-year">2014</div><h4>Medical assistance programme</h4><p>Structured support for treatment costs, second opinions, and emergency care is introduced.</p></div>
-        <div class="tl-item"><div class="tl-year">2026</div><h4>Digital-First Jamat</h4><p>Launching a modern digital ecosystem with member management, online donations, digital membership cards, business directory, event registration, community welfare services, and a secure member portal designed for future generations.</p></div>
-      </div>
+      <div class="timeline reveal" id="timelineList"></div>
     </div>
   </div>
 </section>
@@ -692,11 +2283,11 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
           <img src="https://i.ibb.co/DDVD43DH/FB-IMG-1783539210638.jpg" alt="Haji Musa Tikki, President" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
         </div>
         <div>
-          <div class="eyebrow" style="color:var(--gold-bright);">President's Message</div>
-          <p class="pres-quote">Kachchi Memon Jamat Ner has always stood for unity, service, compassion, and progress. Our community has grown stronger by preserving our traditions while embracing positive change. Every member plays an important role in strengthening our society. Through education, social welfare, business support, and charitable initiatives, we strive to create a brighter future for the coming generations. May Allah (SWT) continue to bless our community with unity, prosperity, and the ability to serve humanity with sincerity.</p>
+          <div class="eyebrow" style="color:var(--gold-bright);" data-i18n="president.eyebrow">President's Message</div>
+          <p class="pres-quote" data-i18n="president.quote">Kachchi Memon Jamat Ner has always stood for unity, service, compassion, and progress. Our community has grown stronger by preserving our traditions while embracing positive change. Every member plays an important role in strengthening our society. Through education, social welfare, business support, and charitable initiatives, we strive to create a brighter future for the coming generations. May Allah (SWT) continue to bless our community with unity, prosperity, and the ability to serve humanity with sincerity.</p>
           <div class="pres-sig">
-            <div class="name">Haji Musa Tikki</div>
-            <div class="role">President, Kachchi Memon Jamat Ner</div>
+            <div class="name" data-i18n="president.name">Haji Musa Tikki</div>
+            <div class="role" data-i18n="president.role">President, Kachchi Memon Jamat Ner</div>
           </div>
         </div>
       </div>
@@ -708,9 +2299,9 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
 <section class="section-pad" id="services">
   <div class="container">
     <div class="section-head center reveal">
-      <div class="eyebrow" style="justify-content:center;">What We Offer</div>
-      <h2 class="section-title">Community services, end to end</h2>
-      <p class="section-sub" style="margin-left:auto;margin-right:auto;">From the first proposal to the final prayer — twelve programmes built around the real needs of member families.</p>
+      <div class="eyebrow" style="justify-content:center;" data-i18n="services.eyebrow">What We Offer</div>
+      <h2 class="section-title" data-i18n="services.title">Community services, end to end</h2>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;" data-i18n="services.sub">From the first proposal to the final prayer — twelve programmes built around the real needs of member families.</p>
     </div>
     <div class="grid-3 reveal" id="servicesGrid"></div>
   </div>
@@ -720,8 +2311,8 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
 <section class="section-pad" id="events" style="background:var(--ivory-deep);">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">Mark Your Calendar</div>
-      <h2 class="section-title">Upcoming events</h2>
+      <div class="eyebrow" data-i18n="events.eyebrow">Mark Your Calendar</div>
+      <h2 class="section-title" data-i18n="events.title">Upcoming events</h2>
     </div>
     <div class="events-row reveal" id="eventsRow"></div>
   </div>
@@ -731,8 +2322,8 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
 <section class="section-pad">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">Stay Informed</div>
-      <h2 class="section-title">Latest announcements</h2>
+      <div class="eyebrow" data-i18n="announcements.eyebrow">Stay Informed</div>
+      <h2 class="section-title" data-i18n="announcements.title">Latest announcements</h2>
     </div>
     <div class="announce-list reveal" id="announceList"></div>
   </div>
@@ -742,14 +2333,14 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
 <section class="section-pad" id="directory" style="background:var(--ivory-deep);">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">Member Businesses</div>
-      <h2 class="section-title">Business directory</h2>
-      <p class="section-sub">Support fellow members — search by name, trade, or neighbourhood.</p>
+      <div class="eyebrow" data-i18n="directory.eyebrow">Member Businesses</div>
+      <h2 class="section-title" data-i18n="directory.title">Business directory</h2>
+      <p class="section-sub" data-i18n="directory.sub">Support fellow members — search by name, trade, or neighbourhood.</p>
     </div>
     <div class="directory-controls reveal">
-      <input class="dir-input" id="dirSearch" placeholder="Search business or owner name…">
+      <input class="dir-input" id="dirSearch" data-i18n-placeholder="directory.searchPlaceholder" placeholder="Search business or owner name…">
       <select class="dir-select" id="dirCategory">
-        <option value="">All Categories</option>
+        <option value="" id="dirAllCatOpt">All Categories</option>
       </select>
     </div>
     <div class="dir-grid reveal" id="dirGrid"></div>
@@ -760,8 +2351,8 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
 <section class="section-pad" id="gallery">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">Moments</div>
-      <h2 class="section-title">Community gallery</h2>
+      <div class="eyebrow" data-i18n="gallery.eyebrow">Moments</div>
+      <h2 class="section-title" data-i18n="gallery.title">Community gallery</h2>
     </div>
     <div class="gallery-tabs reveal" id="galleryTabs"></div>
     <div class="masonry reveal" id="galleryGrid"></div>
@@ -779,26 +2370,26 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
   <div class="container">
     <div class="donate-box reveal">
       <div>
-        <div class="eyebrow" style="color:var(--gold-bright);">Ramzan Relief Fund</div>
-        <h2 class="section-title" style="color:#F8F5EC;">Every rupee reaches a family that needs it.</h2>
-        <p style="color:rgba(248,245,236,.7); margin-top:16px;">100% of contributions go directly to ration kits, medical aid, and Eid support for families identified by our welfare committee.</p>
+        <div class="eyebrow" style="color:var(--gold-bright);" data-i18n="donate.eyebrow">Ramzan Relief Fund</div>
+        <h2 class="section-title" style="color:#F8F5EC;" data-i18n="donate.title">Every rupee reaches a family that needs it.</h2>
+        <p style="color:rgba(248,245,236,.7); margin-top:16px;" data-i18n="donate.desc">100% of contributions go directly to ration kits, medical aid, and Eid support for families identified by our welfare committee.</p>
         <div class="progress-track"><div class="progress-fill" id="donateProgress"></div></div>
         <div class="donate-figures">
-          <div><b>₹8,20,000</b>raised</div>
-          <div style="text-align:right;"><b>₹10,00,000</b>goal</div>
+          <div><b>₹8,20,000</b><span data-i18n="donate.raised">raised</span></div>
+          <div style="text-align:right;"><b>₹10,00,000</b><span data-i18n="donate.goal">goal</span></div>
         </div>
         <div class="hero-actions" style="justify-content:flex-start; margin-top:30px;">
-          <a href="#" class="btn btn-gold">Donate Now</a>
-          <a href="#" class="btn btn-ghost" style="border-color:rgba(255,255,255,.3); color:#F8F5EC;">Give Online</a>
+          <a href="#" class="btn btn-gold" data-i18n="donate.btnDonate">Donate Now</a>
+          <a href="#" class="btn btn-ghost" style="border-color:rgba(255,255,255,.3); color:#F8F5EC;" data-i18n="donate.btnOnline">Give Online</a>
         </div>
       </div>
       <div class="qr-box">
         <div class="qr"></div>
-        <p>Scan to donate via UPI<br><b style="color:var(--ink);">jamatner@upi</b> (placeholder)</p>
+        <p><span data-i18n="donate.qrCaption">Scan to donate via UPI</span><br><b style="color:var(--ink);">jamatner@upi</b> (placeholder)</p>
       </div>
     </div>
     <div class="donors-strip reveal">
-      <div class="donors-head"><span class="star-motif" style="width:16px;height:16px;"></span> Recent Donors</div>
+      <div class="donors-head"><span class="star-motif" style="width:16px;height:16px;"></span> <span data-i18n="donate.recentDonors">Recent Donors</span></div>
       <div class="donors-row" id="donorsRow"></div>
     </div>
   </div>
@@ -808,8 +2399,8 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
 <section class="section-pad" style="background:var(--ivory-deep);">
   <div class="container">
     <div class="section-head center reveal">
-      <div class="eyebrow" style="justify-content:center;">In Their Words</div>
-      <h2 class="section-title">What our members say</h2>
+      <div class="eyebrow" style="justify-content:center;" data-i18n="testimonials.eyebrow">In Their Words</div>
+      <h2 class="section-title" data-i18n="testimonials.title">What our members say</h2>
     </div>
     <div class="test-wrap reveal" id="testWrap"></div>
   </div>
@@ -819,12 +2410,12 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
 <section class="section-pad" id="leadership">
   <div class="container">
     <div class="section-head center reveal">
-      <div class="eyebrow" style="justify-content:center;">Leadership</div>
-      <h2 class="section-title">The people behind the Jamat</h2>
-      <p class="section-sub" style="margin-left:auto;margin-right:auto;">Elected trustees who carry forward 75 years of community trust.</p>
+      <div class="eyebrow" style="justify-content:center;" data-i18n="leadership.eyebrow">Leadership</div>
+      <h2 class="section-title" data-i18n="leadership.title">The people behind the Jamat</h2>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;" data-i18n="leadership.sub">Elected trustees who carry forward 75 years of community trust.</p>
     </div>
     <div class="committee-lead reveal" id="committeeLead"></div>
-    <div class="committee-grid-title reveal">Managing Committee Members</div>
+    <div class="committee-grid-title reveal" data-i18n="leadership.committeeGridTitle">Managing Committee Members</div>
     <div class="grid-4 reveal" id="committeeGrid"></div>
   </div>
 </section>
@@ -833,9 +2424,9 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
 <section class="section-pad" style="background:var(--ivory-deep);">
   <div class="container">
     <div class="section-head center reveal">
-      <div class="eyebrow" style="justify-content:center;">Coming to the Portal</div>
-      <h2 class="section-title">Building the digital Jamat</h2>
-      <p class="section-sub" style="margin-left:auto;margin-right:auto;">Nineteen modules in active development — a single login for every service the community offers.</p>
+      <div class="eyebrow" style="justify-content:center;" data-i18n="modules.eyebrow">Coming to the Portal</div>
+      <h2 class="section-title" data-i18n="modules.title">Building the digital Jamat</h2>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;" data-i18n="modules.sub">Nineteen modules in active development — a single login for every service the community offers.</p>
     </div>
     <div class="grid-4 reveal" id="modulesGrid"></div>
   </div>
@@ -845,8 +2436,8 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
 <section class="section-pad" style="background:var(--ivory-deep);">
   <div class="container">
     <div class="section-head center reveal">
-      <div class="eyebrow" style="justify-content:center;">Questions</div>
-      <h2 class="section-title">Frequently asked questions</h2>
+      <div class="eyebrow" style="justify-content:center;" data-i18n="faq.eyebrow">Questions</div>
+      <h2 class="section-title" data-i18n="faq.title">Frequently asked questions</h2>
     </div>
     <div class="faq-wrap reveal" id="faqWrap"></div>
   </div>
@@ -856,28 +2447,28 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
 <section class="section-pad" id="contact">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">Reach Us</div>
-      <h2 class="section-title">Get in touch</h2>
+      <div class="eyebrow" data-i18n="contact.eyebrow">Reach Us</div>
+      <h2 class="section-title" data-i18n="contact.title">Get in touch</h2>
     </div>
     <div class="contact-grid reveal">
       <div>
         <div class="map-block">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-          Map placeholder — Jamat Ner Community Hall
+          <span data-i18n="contact.mapPlaceholder">Map placeholder — Jamat Ner Community Hall</span>
         </div>
         <div class="contact-info-list">
-          <div class="row"><div class="ic2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div>Jamat Community Hall, Main Road,<br>Ner, Yavatmal District, Maharashtra 445204</div></div>
+          <div class="row"><div class="ic2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div data-i18n="contact.address">Jamat Community Hall, Main Road, Ner, Yavatmal District, Maharashtra 445204</div></div>
           <div class="row"><div class="ic2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2Z"/></svg></div><div>+91 98765 43210</div></div>
           <div class="row"><div class="ic2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg></div><div>office@jamatner.org</div></div>
-          <div class="row"><div class="ic2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><div>Mon – Sat, 10:00 AM – 6:00 PM</div></div>
+          <div class="row"><div class="ic2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><div data-i18n="contact.hours">Mon – Sat, 10:00 AM – 6:00 PM</div></div>
         </div>
       </div>
-      <form onsubmit="event.preventDefault(); this.reset(); alert('Message sent — placeholder form.');">
-        <div class="form-field"><input type="text" placeholder="Full name" required></div>
-        <div class="form-field"><input type="tel" placeholder="Phone number" required></div>
-        <div class="form-field"><input type="email" placeholder="Email address"></div>
-        <div class="form-field"><textarea rows="5" placeholder="How can we help?" required></textarea></div>
-        <button class="btn btn-primary" style="width:100%; justify-content:center;">Send Message</button>
+      <form onsubmit="handleContactSubmit(event, this); return false;">
+        <div class="form-field"><input type="text" data-i18n-placeholder="contact.formName" placeholder="Full name" required></div>
+        <div class="form-field"><input type="tel" data-i18n-placeholder="contact.formPhone" placeholder="Phone number" required></div>
+        <div class="form-field"><input type="email" data-i18n-placeholder="contact.formEmail" placeholder="Email address"></div>
+        <div class="form-field"><textarea rows="5" data-i18n-placeholder="contact.formMessage" placeholder="How can we help?" required></textarea></div>
+        <button class="btn btn-primary" style="width:100%; justify-content:center;" data-i18n="contact.formSubmit">Send Message</button>
       </form>
     </div>
   </div>
@@ -889,7 +2480,7 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
     <div class="foot-grid">
       <div class="foot-brand">
         <div class="brand" style="color:#F8F5EC;"><span class="brand-mark"><span class="star-motif"></span></span> Kachchi Memon Jamat Ner</div>
-        <p>Serving the community with faith, unity &amp; progress since 1949.</p>
+        <p data-i18n="footer.tagline">Serving the community with faith, unity &amp; progress since 1949.</p>
         <div class="social-row">
           <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M14 9h3V6h-3a4 4 0 0 0-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2a1 1 0 0 1 1-1Z"/></svg></a>
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
@@ -897,38 +2488,61 @@ footer{background:var(--emerald-deep); color:rgba(248,245,236,.75); padding:80px
         </div>
       </div>
       <div>
-        <h5>Prayer Times</h5>
-        <div class="prayer-row"><span>Fajr</span><span>4:52 AM</span></div>
-        <div class="prayer-row"><span>Zuhr</span><span>1:15 PM</span></div>
-        <div class="prayer-row"><span>Asr</span><span>5:40 PM</span></div>
-        <div class="prayer-row"><span>Maghrib</span><span>7:12 PM</span></div>
-        <div class="prayer-row"><span>Isha</span><span>8:30 PM</span></div>
+        <h5 data-i18n="footer.prayerTimes">Prayer Times</h5>
+        <div class="prayer-row"><span data-i18n="footer.prayers.0">Fajr</span><span>4:52 AM</span></div>
+        <div class="prayer-row"><span data-i18n="footer.prayers.1">Zuhr</span><span>1:15 PM</span></div>
+        <div class="prayer-row"><span data-i18n="footer.prayers.2">Asr</span><span>5:40 PM</span></div>
+        <div class="prayer-row"><span data-i18n="footer.prayers.3">Maghrib</span><span>7:12 PM</span></div>
+        <div class="prayer-row"><span data-i18n="footer.prayers.4">Isha</span><span>8:30 PM</span></div>
       </div>
       <div>
-        <h5>Quick Links</h5>
-        <a href="#about">About the Jamat</a>
-        <a href="#services">Community Services</a>
-        <a href="#directory">Business Directory</a>
-        <a href="#donate">Donations</a>
-        <a href="#contact">Contact Us</a>
+        <h5 data-i18n="footer.quickLinks">Quick Links</h5>
+        <a href="#about" data-i18n="footer.quickLinksItems.0">About the Jamat</a>
+        <a href="#services" data-i18n="footer.quickLinksItems.1">Community Services</a>
+        <a href="#directory" data-i18n="footer.quickLinksItems.2">Business Directory</a>
+        <a href="#donate" data-i18n="footer.quickLinksItems.3">Donations</a>
+        <a href="#contact" data-i18n="footer.quickLinksItems.4">Contact Us</a>
       </div>
       <div>
-        <h5>Newsletter</h5>
-        <p style="color:rgba(248,245,236,.6); font-size:13.5px; margin-bottom:12px;">Monthly updates on events, welfare drives, and Jamat news.</p>
-        <form class="newsletter-row" onsubmit="event.preventDefault(); this.reset(); alert('Subscribed — placeholder.');">
-          <input type="email" placeholder="Your email" required>
-          <button>Join</button>
+        <h5 data-i18n="footer.newsletter">Newsletter</h5>
+        <p style="color:rgba(248,245,236,.6); font-size:13.5px; margin-bottom:12px;" data-i18n="footer.newsletterDesc">Monthly updates on events, welfare drives, and Jamat news.</p>
+        <form class="newsletter-row" onsubmit="handleNewsletterSubmit(event, this); return false;">
+          <input type="email" data-i18n-placeholder="footer.newsletterPlaceholder" placeholder="Your email" required>
+          <button data-i18n="footer.newsletterBtn">Join</button>
         </form>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Kachchi Memon Jamat Ner. All rights reserved.</span>
-      <span>Built with care for the community.</span>
+      <span data-i18n="footer.copyright">© 2026 Kachchi Memon Jamat Ner. All rights reserved.</span>
+      <span data-i18n="footer.builtWith">Built with care for the community.</span>
     </div>
   </div>
 </footer>
 
 <script>
+/* ============ I18N CORE ============ */
+const SUPPORTED_LANGS = ['en','hi','mr','gu'];
+let currentLang = 'en';
+
+function t(lang, path){
+  return path.split('.').reduce((o,k)=> (o && o[k] !== undefined) ? o[k] : undefined, window.I18N[lang]);
+}
+function applyStaticI18n(lang){
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const val = t(lang, el.dataset.i18n);
+    if(val !== undefined) el.textContent = val;
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const val = t(lang, el.dataset.i18nPlaceholder);
+    if(val !== undefined) el.placeholder = val;
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el=>{
+    const val = t(lang, el.dataset.i18nAria);
+    if(val !== undefined) el.setAttribute('aria-label', val);
+  });
+}
+
 /* ============ NAV SCROLL + MOBILE MENU ============ */
 const mainNav = document.getElementById('mainNav');
 window.addEventListener('scroll', ()=>{
@@ -946,13 +2560,27 @@ const langMenu = document.getElementById('langMenu');
 langBtn.onclick = (e)=>{ e.stopPropagation(); langSwitch.classList.toggle('open'); };
 document.addEventListener('click', ()=> langSwitch.classList.remove('open'));
 langMenu.querySelectorAll('button').forEach(btn=>{
-  btn.onclick = ()=>{
-    document.getElementById('langFlag').textContent = btn.dataset.flag;
-    document.getElementById('langCode').textContent = btn.dataset.code;
-    langSwitch.classList.remove('open');
-    // Multilingual content pack coming soon — UI is wired and ready for translation strings.
-  };
+  btn.onclick = ()=>{ setLanguage(btn.dataset.code.toLowerCase()); langSwitch.classList.remove('open'); };
 });
+function updateLangUI(lang){
+  const meta = window.I18N[lang].meta;
+  document.getElementById('langFlag').textContent = meta.flag;
+  document.getElementById('langCode').textContent = meta.code.toUpperCase();
+  langMenu.querySelectorAll('button').forEach(btn=>{
+    btn.classList.toggle('active', btn.dataset.code.toLowerCase() === lang);
+  });
+}
+function setLanguage(lang){
+  if(!SUPPORTED_LANGS.includes(lang)) lang = 'en';
+  currentLang = lang;
+  try{ localStorage.setItem('jamatner_lang', lang); }catch(e){}
+  document.body.classList.add('i18n-switching');
+  setTimeout(()=>{
+    renderAll();
+    updateLangUI(lang);
+    document.body.classList.remove('i18n-switching');
+  }, 180);
+}
 
 /* ============ DARK MODE ============ */
 const themeToggle = document.getElementById('themeToggle');
@@ -970,14 +2598,13 @@ themeToggle.onclick = ()=>{
 };
 
 /* ============ SCROLL REVEAL ============ */
-const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
 },{threshold:0.12});
-revealEls.forEach(el=> io.observe(el));
+function observeReveals(){ document.querySelectorAll('.reveal:not(.in)').forEach(el=> io.observe(el)); }
+observeReveals();
 
 /* ============ ANIMATED COUNTERS ============ */
-const counters = document.querySelectorAll('[data-count]');
 const cIo = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -997,7 +2624,7 @@ const cIo = new IntersectionObserver((entries)=>{
     }
   });
 },{threshold:0.5});
-counters.forEach(el=> cIo.observe(el));
+document.querySelectorAll('[data-count]').forEach(el=> cIo.observe(el));
 
 /* ============ ICON LIBRARY ============ */
 const icons = {
@@ -1036,49 +2663,73 @@ const icons = {
 };
 function svg(name){ return `<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">${icons[name]||icons.heart}</svg>`; }
 
-/* ============ SERVICES DATA ============ */
-const services = [
-  {icon:'ring', title:'Marriage Bureau', desc:'Verified matches within the community, guided by family and trust.'},
-  {icon:'scholarship', title:'Education Scholarships', desc:'Annual support for school, college, and vocational learners.'},
-  {icon:'medical', title:'Medical Assistance', desc:'Treatment cost support, referrals, and second-opinion guidance.'},
-  {icon:'heart', title:'Zakat &amp; Charity', desc:'Structured distribution to families identified by the welfare team.'},
-  {icon:'funeral', title:'Funeral Services', desc:'Ghusl, transport, and burial arrangements handled with dignity.'},
-  {icon:'hall', title:'Community Hall Booking', desc:'Reserve the Jamat hall for weddings, majlis, and gatherings.'},
-  {icon:'bizDir', title:'Business Directory', desc:'Discover and support member-owned businesses across trades.'},
-  {icon:'users', title:'Youth Development', desc:'Mentorship, sports, and skill-building for the next generation.'},
-  {icon:'women', title:"Women's Welfare", desc:'Tailoring, tuition, and support circles led by community women.'},
-  {icon:'senior', title:'Senior Citizen Support', desc:'Home visits, medical follow-ups, and companionship programmes.'},
-  {icon:'scale', title:'Legal Guidance', desc:'Access to community-vetted legal advice for family and property matters.'},
-  {icon:'alert', title:'Emergency Assistance', desc:'A 24-hour point of contact for urgent family or medical crises.'},
-];
-document.getElementById('servicesGrid').innerHTML = services.map(s=>`
-  <div class="card"><div class="ic">${svg(s.icon)}</div><h4>${s.title}</h4><p>${s.desc}</p></div>
-`).join('');
+/* icon order matches the fixed (language-independent) service/module list */
+const serviceIcons = ['ring','scholarship','medical','heart','funeral','hall','bizDir','users','women','senior','scale','alert'];
+const moduleIcons = ['login','card','formInput','matri','scholarship','medPortal','blood','funeral','hall','bizDir','volunteer','complaint','job','family','download','eventReg','history','dashboard','admin'];
 
-/* ============ EVENTS DATA + COUNTDOWN ============ */
-const events = [
-  {title:'Annual Milad-un-Nabi Gathering', desc:'Community-wide programme with lecture, nasheeds, and dinner.', date: new Date(Date.now()+1000*60*60*24*18), img:'linear-gradient(135deg,#12654F,#0A3E31)'},
-  {title:'Scholarship Distribution Day', desc:"Felicitating this year's scholarship recipients and toppers.", date: new Date(Date.now()+1000*60*60*24*34), img:'linear-gradient(135deg,#B78A45,#0A3E31)'},
-  {title:'Free Medical Health Camp', desc:'General check-up, eye camp, and diabetes screening for all members.', date: new Date(Date.now()+1000*60*60*24*47), img:'linear-gradient(135deg,#0A3E31,#1E8266)'},
+/* ============ PILLARS ============ */
+function renderPillars(){
+  const pillars = t(currentLang, 'about.pillars') || [];
+  document.getElementById('pillarsGrid').innerHTML = pillars.map(p=>`
+    <div class="pillar"><span class="star-motif"></span><span>${p}</span></div>
+  `).join('');
+}
+
+/* ============ TIMELINE ============ */
+function renderTimeline(){
+  const items = t(currentLang, 'timeline') || [];
+  document.getElementById('timelineList').innerHTML = items.map(tl=>`
+    <div class="tl-item"><div class="tl-year">${tl.year}</div><h4>${tl.title}</h4><p>${tl.desc}</p></div>
+  `).join('');
+}
+
+/* ============ SERVICES ============ */
+function renderServices(){
+  const items = t(currentLang, 'services.items') || [];
+  document.getElementById('servicesGrid').innerHTML = items.map((s,i)=>`
+    <div class="card"><div class="ic">${svg(serviceIcons[i])}</div><h4>${s.title}</h4><p>${s.desc}</p></div>
+  `).join('');
+}
+
+/* ============ EVENTS + COUNTDOWN ============ */
+const eventDates = [
+  new Date(Date.now()+1000*60*60*24*18),
+  new Date(Date.now()+1000*60*60*24*34),
+  new Date(Date.now()+1000*60*60*24*47),
 ];
-document.getElementById('eventsRow').innerHTML = events.map((e,i)=>`
-  <div class="event-card">
-    <div class="event-media" style="background:${e.img}">
-      <div class="event-date-badge"><div class="d">${e.date.getDate()}</div><div class="m">${e.date.toLocaleString('en',{month:'short'})}</div></div>
-    </div>
-    <div class="event-body">
-      <h4>${e.title}</h4>
-      <p>${e.desc}</p>
-      <div class="countdown" data-target="${e.date.getTime()}" id="cd-${i}">
-        <div><div class="n dd">00</div><div class="u">Days</div></div>
-        <div><div class="n hh">00</div><div class="u">Hrs</div></div>
-        <div><div class="n mm">00</div><div class="u">Min</div></div>
-        <div><div class="n ss">00</div><div class="u">Sec</div></div>
+const eventImgs = ['linear-gradient(135deg,#12654F,#0A3E31)','linear-gradient(135deg,#B78A45,#0A3E31)','linear-gradient(135deg,#0A3E31,#1E8266)'];
+const monthAbbrev = {
+  en:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+  hi:['जन','फ़र','मार्च','अप्रैल','मई','जून','जुल','अग','सित','अक्टू','नव','दिस'],
+  mr:['जाने','फेब्रु','मार्च','एप्रि','मे','जून','जुलै','ऑग','सप्टें','ऑक्टो','नोव्हें','डिसें'],
+  gu:['જાન્યુ','ફેબ્રુ','માર્ચ','એપ્રિ','મે','જૂન','જુલા','ઑગ','સપ્ટે','ઑક્ટો','નવે','ડિસે'],
+};
+function renderEvents(){
+  const items = t(currentLang, 'events.items') || [];
+  const L = t(currentLang, 'events');
+  document.getElementById('eventsRow').innerHTML = items.map((e,i)=>{
+    const d = eventDates[i];
+    const months = monthAbbrev[currentLang] || monthAbbrev.en;
+    return `
+    <div class="event-card">
+      <div class="event-media" style="background:${eventImgs[i]}">
+        <div class="event-date-badge"><div class="d">${d.getDate()}</div><div class="m">${months[d.getMonth()]}</div></div>
       </div>
-      <a href="#" class="btn btn-primary btn-sm" style="width:100%; justify-content:center;">Register</a>
-    </div>
-  </div>
-`).join('');
+      <div class="event-body">
+        <h4>${e.title}</h4>
+        <p>${e.desc}</p>
+        <div class="countdown" data-target="${d.getTime()}" id="cd-${i}">
+          <div><div class="n dd">00</div><div class="u">${L.days}</div></div>
+          <div><div class="n hh">00</div><div class="u">${L.hrs}</div></div>
+          <div><div class="n mm">00</div><div class="u">${L.min}</div></div>
+          <div><div class="n ss">00</div><div class="u">${L.sec}</div></div>
+        </div>
+        <a href="#" class="btn btn-primary btn-sm" style="width:100%; justify-content:center;">${L.register}</a>
+      </div>
+    </div>`;
+  }).join('');
+  updateCountdowns();
+}
 function updateCountdowns(){
   document.querySelectorAll('.countdown').forEach(cd=>{
     const target = +cd.dataset.target;
@@ -1093,17 +2744,15 @@ function updateCountdowns(){
     cd.querySelector('.ss').textContent = String(s).padStart(2,'0');
   });
 }
-updateCountdowns(); setInterval(updateCountdowns, 1000);
+setInterval(updateCountdowns, 1000);
 
 /* ============ ANNOUNCEMENTS ============ */
-const announcements = [
-  {date:'02 Jul 2026', title:'Ramzan Relief Fund extended', desc:'Given the response so far, the committee has extended collection by two weeks to reach the ₹10 lakh goal.'},
-  {date:'24 Jun 2026', title:'New office hours for the Jamat office', desc:'The community office will now remain open till 6 PM on weekdays to accommodate working members.'},
-  {date:'11 Jun 2026', title:'Business directory now open for listings', desc:'Member-owned businesses can now register for a free listing on the community directory.'},
-];
-document.getElementById('announceList').innerHTML = announcements.map(a=>`
-  <div class="announce-item"><div class="dt">${a.date}</div><div><h4>${a.title}</h4><p>${a.desc}</p></div></div>
-`).join('');
+function renderAnnouncements(){
+  const items = t(currentLang, 'announcements.items') || [];
+  document.getElementById('announceList').innerHTML = items.map(a=>`
+    <div class="announce-item"><div class="dt">${a.date}</div><div><h4>${a.title}</h4><p>${a.desc}</p></div></div>
+  `).join('');
+}
 
 /* ============ BUSINESS DIRECTORY ============ */
 const businesses = [
@@ -1111,7 +2760,7 @@ const businesses = [
   {name:'Ner Medical Store', owner:'Dr. Imran Sheikh', category:'Healthcare', phone:'+91 98230 44556', address:'Station Road, Ner'},
   {name:'Al-Barkat Hardware', owner:'Rafiq Memon', category:'Hardware', phone:'+91 98110 77889', address:'Gandhi Chowk, Ner'},
   {name:'Makwani Mobile Shop', owner:'Sufiyan Makwani', category:'Electronics', phone:'+91 98765 43210', address:'Ner Parsopant, Yavatmal'},
-  {name:'Noorani Bakers', owner:'Zainab Noorani', category:'Food &amp; Bakery', phone:'+91 98220 99887', address:'Bazar Peth, Ner'},
+  {name:'Noorani Bakers', owner:'Zainab Noorani', category:'Food & Bakery', phone:'+91 98220 99887', address:'Bazar Peth, Ner'},
   {name:'Ideal Coaching Classes', owner:'Adnan Kadri', category:'Education', phone:'+91 98110 22334', address:'School Road, Ner'},
   {name:'Memon Transport Co.', owner:'Bilal Memon', category:'Logistics', phone:'+91 98230 55667', address:'Highway Chowk, Ner'},
   {name:'Sitara Boutique', owner:'Fatima Tikki', category:'Fashion', phone:'+91 98220 33445', address:'Main Bazaar, Ner'},
@@ -1120,10 +2769,16 @@ const businesses = [
 const dirGrid = document.getElementById('dirGrid');
 const dirSearch = document.getElementById('dirSearch');
 const dirCategory = document.getElementById('dirCategory');
-[...new Set(businesses.map(b=>b.category))].forEach(c=>{
-  const opt = document.createElement('option'); opt.value=c; opt.textContent=c; dirCategory.appendChild(opt);
-});
+function renderDirectoryOptions(){
+  const cats = t(currentLang, 'directory.categories') || {};
+  const allLabel = t(currentLang, 'directory.allCategories');
+  const prevValue = dirCategory.value;
+  dirCategory.innerHTML = `<option value="">${allLabel}</option>` +
+    [...new Set(businesses.map(b=>b.category))].map(c=> `<option value="${c}">${cats[c] || c}</option>`).join('');
+  dirCategory.value = prevValue || '';
+}
 function renderDirectory(){
+  const cats = t(currentLang, 'directory.categories') || {};
   const q = dirSearch.value.toLowerCase();
   const cat = dirCategory.value;
   const filtered = businesses.filter(b=>
@@ -1132,17 +2787,16 @@ function renderDirectory(){
   );
   dirGrid.innerHTML = filtered.length ? filtered.map(b=>`
     <div class="dir-card">
-      <div class="cat">${b.category}</div>
+      <div class="cat">${cats[b.category] || b.category}</div>
       <h4>${b.name}</h4>
       <div class="owner">${b.owner}</div>
       <div class="row">${svg('phone')}${b.phone}</div>
       <div class="row">${svg('home')}${b.address}</div>
     </div>
-  `).join('') : '<div class="dir-empty">No businesses match your search — try a different name or category.</div>';
+  `).join('') : `<div class="dir-empty">${t(currentLang,'directory.empty')}</div>`;
 }
 dirSearch.addEventListener('input', renderDirectory);
 dirCategory.addEventListener('change', renderDirectory);
-renderDirectory();
 
 /* ============ GALLERY ============ */
 const galleryCats = ['All','Events','Charity','Education','Family'];
@@ -1157,10 +2811,16 @@ const galleryImgs = [
   {cat:'Family', seed:'jamat-family-2', h:380},
   {cat:'Events', seed:'jamat-event-3', h:460},
 ];
-document.getElementById('galleryTabs').innerHTML = galleryCats.map((c,i)=>`<button class="g-tab ${i===0?'active':''}" data-cat="${c}">${c}</button>`).join('');
-document.getElementById('galleryGrid').innerHTML = galleryImgs.map((g,i)=>`
-  <div class="g-item show" data-cat="${g.cat}" data-i="${i}"><img loading="lazy" src="https://picsum.photos/seed/${g.seed}/640/${g.h}" alt="${g.cat} photo"></div>
-`).join('');
+function renderGallery(){
+  const tabs = t(currentLang, 'gallery.tabs') || galleryCats;
+  const activeCat = document.querySelector('.g-tab.active')?.dataset.cat || 'All';
+  document.getElementById('galleryTabs').innerHTML = galleryCats.map((c,i)=>
+    `<button class="g-tab ${c===activeCat?'active':''}" data-cat="${c}">${tabs[i]}</button>`
+  ).join('');
+  document.getElementById('galleryGrid').innerHTML = galleryImgs.map((g,i)=>
+    `<div class="g-item ${(activeCat==='All'||g.cat===activeCat)?'show':''}" data-cat="${g.cat}" data-i="${i}"><img loading="lazy" src="https://picsum.photos/seed/${g.seed}/640/${g.h}" alt="${g.cat} photo"></div>`
+  ).join('');
+}
 document.getElementById('galleryTabs').addEventListener('click', (e)=>{
   const btn = e.target.closest('.g-tab'); if(!btn) return;
   document.querySelectorAll('.g-tab').forEach(t=>t.classList.remove('active'));
@@ -1169,40 +2829,6 @@ document.getElementById('galleryTabs').addEventListener('click', (e)=>{
   document.querySelectorAll('.g-item').forEach(item=>{
     item.classList.toggle('show', cat==='All' || item.dataset.cat===cat);
   });
-});
-
-/* ============ RECENT DONORS ============ */
-const donors = [
-  {name:'Yusuf Tikki', amt:'₹25,000'}, {name:'Fatima Sheikh', amt:'₹11,000'},
-  {name:'Anonymous', amt:'₹51,000'}, {name:'Bilal Memon', amt:'₹5,100'},
-  {name:'Zainab Kadri', amt:'₹21,000'}, {name:'Rafiq Traders', amt:'₹1,00,000'},
-];
-document.getElementById('donorsRow').innerHTML = donors.map(d=>`
-  <div class="donor-chip"><div class="av">${d.name==='Anonymous'?'—':d.name.split(' ').map(w=>w[0]).slice(0,2).join('')}</div>
-  <div class="info"><div class="n">${d.name}</div><div class="amt">${d.amt}</div></div></div>
-`).join('');
-
-/* ============ FAQ ============ */
-const faqs = [
-  {q:'Who is eligible to become a member of the Jamat?', a:'Any Kachchi Memon family residing in or connected to Ner can apply for membership through the registration desk or the upcoming online portal.'},
-  {q:'How is the Zakat and Charity fund distributed?', a:'The welfare committee identifies eligible families through home visits and community references, then disburses funds monthly with full transparency.'},
-  {q:'Can non-members list their business in the directory?', a:'The directory is currently reserved for member-owned businesses. Membership can be completed in a single visit to the Jamat office.'},
-  {q:'How do I apply for a medical assistance grant?', a:'Submit medical documents and estimates to the office or, once live, through the Medical Assistance Portal — the committee typically responds within 48 hours.'},
-];
-document.getElementById('faqWrap').innerHTML = faqs.map((f,i)=>`
-  <div class="faq-item ${i===0?'open':''}">
-    <button class="faq-q">${f.q}<span class="plus"></span></button>
-    <div class="faq-a"><p>${f.a}</p></div>
-  </div>
-`).join('');
-document.querySelectorAll('.faq-item').forEach(item=>{
-  const a = item.querySelector('.faq-a');
-  if(item.classList.contains('open')) a.style.maxHeight = a.scrollHeight+'px';
-  item.querySelector('.faq-q').onclick = ()=>{
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(o=>{ o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = null; });
-    if(!isOpen){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight+'px'; }
-  };
 });
 
 /* ============ LIGHTBOX ============ */
@@ -1229,46 +2855,56 @@ document.addEventListener('keydown', (e)=>{
   if(e.key==='ArrowRight') document.getElementById('lbNext').click();
 });
 
-/* ============ DONATE PROGRESS ============ */
+/* ============ DONATE PROGRESS + DONORS ============ */
 const pct = (820000/1000000)*100;
 const progIo = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ document.getElementById('donateProgress').style.width = pct+'%'; progIo.disconnect(); } });
 },{threshold:0.4});
 progIo.observe(document.getElementById('donateProgress'));
+const donors = [
+  {name:'Yusuf Tikki', amt:'₹25,000'}, {name:'Fatima Sheikh', amt:'₹11,000'},
+  {name:'Anonymous', amt:'₹51,000'}, {name:'Bilal Memon', amt:'₹5,100'},
+  {name:'Zainab Kadri', amt:'₹21,000'}, {name:'Rafiq Traders', amt:'₹1,00,000'},
+];
+document.getElementById('donorsRow').innerHTML = donors.map(d=>`
+  <div class="donor-chip"><div class="av">${d.name==='Anonymous'?'—':d.name.split(' ').map(w=>w[0]).slice(0,2).join('')}</div>
+  <div class="info"><div class="n">${d.name}</div><div class="amt">${d.amt}</div></div></div>
+`).join('');
 
 /* ============ TESTIMONIALS ============ */
-const testimonials = [
-  {quote:"The scholarship programme changed my daughter's life — she's now studying engineering because the Jamat believed in her before we could afford to.", name:'Ayesha R.', role:'Member since 2009'},
-  {quote:'When my father needed urgent surgery, the medical assistance desk had funds arranged within two days. That kind of support is rare anywhere.', name:'Kaif M.', role:'Member since 2015'},
-  {quote:'Listing my shop on the business directory brought me customers I never would have reached on my own. The community truly looks after its own.', name:'Sadiya T.', role:'Member since 2018'},
-];
-const testWrap = document.getElementById('testWrap');
-testWrap.innerHTML = `
-  <div id="testSlides">${testimonials.map((t,i)=>`
-    <div class="test-slide ${i===0?'active':''}">
-      <p class="test-quote">${t.quote}</p>
-      <div class="test-name">${t.name}</div>
-      <div class="test-role">${t.role}</div>
-    </div>`).join('')}</div>
-  <div class="test-nav" id="testDots">${testimonials.map((_,i)=>`<div class="test-dot ${i===0?'active':''}" data-i="${i}"></div>`).join('')}</div>
-`;
 let testIdx = 0;
-function showTest(i){
+let testInterval = null;
+function renderTestimonials(){
+  const items = t(currentLang, 'testimonials.items') || [];
+  const testWrap = document.getElementById('testWrap');
+  testWrap.innerHTML = `
+    <div id="testSlides">${items.map((tm,i)=>`
+      <div class="test-slide ${i===0?'active':''}">
+        <p class="test-quote">${tm.quote}</p>
+        <div class="test-name">${tm.name}</div>
+        <div class="test-role">${tm.role}</div>
+      </div>`).join('')}</div>
+    <div class="test-nav" id="testDots">${items.map((_,i)=>`<div class="test-dot ${i===0?'active':''}" data-i="${i}"></div>`).join('')}</div>
+  `;
+  testIdx = 0;
+  document.getElementById('testDots').addEventListener('click', e=>{
+    const dot = e.target.closest('.test-dot'); if(!dot) return; showTest(+dot.dataset.i, items.length);
+  });
+  if(testInterval) clearInterval(testInterval);
+  testInterval = setInterval(()=> showTest((testIdx+1)%items.length, items.length), 6000);
+}
+function showTest(i, len){
   document.querySelectorAll('.test-slide').forEach((s,idx)=>s.classList.toggle('active', idx===i));
   document.querySelectorAll('.test-dot').forEach((d,idx)=>d.classList.toggle('active', idx===i));
   testIdx = i;
 }
-document.getElementById('testDots').addEventListener('click', e=>{
-  const dot = e.target.closest('.test-dot'); if(!dot) return; showTest(+dot.dataset.i);
-});
-setInterval(()=> showTest((testIdx+1)%testimonials.length), 6000);
 
-/* ============ COMMITTEE / LEADERSHIP ============ */
-const leadTeam = [
-  {name:'Haji Musa Tikki', role:'President', photo:'https://i.ibb.co/DDVD43DH/FB-IMG-1783539210638.jpg'},
-  {name:'Haji Altaf Marchiya', role:'Vice President'},
-  {name:'Iqbal Ahmed Sheikh', role:'Secretary'},
-  {name:'Yakub Ibrahim Tikki', role:'Treasurer'},
+/* ============ LEADERSHIP / COMMITTEE ============ */
+const leadTeamBase = [
+  {name:'Haji Musa Tikki', roleKey:'President', photo:'https://i.ibb.co/DDVD43DH/FB-IMG-1783539210638.jpg'},
+  {name:'Haji Altaf Marchiya', roleKey:'Vice President'},
+  {name:'Iqbal Ahmed Sheikh', roleKey:'Secretary'},
+  {name:'Yakub Ibrahim Tikki', roleKey:'Treasurer'},
 ];
 const committeeTeam = [
   'Nazir Ahmed Memon','Salim Yusuf Tikki','Rafiq Karim Sheikh','Farooq Osman Memon',
@@ -1278,48 +2914,92 @@ const socialIcons = `
   <a href="#" aria-label="Call">${svg('phone')}</a>
   <a href="#" aria-label="Message"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg></a>
   <a href="#" aria-label="Email">${svg('formInput')}</a>`;
-document.getElementById('committeeLead').innerHTML = leadTeam.map(m=>`
-  <div class="lead-card">
-    <div class="lead-avatar"><div class="lead-avatar-inner">
-      ${m.photo ? `<img src="${m.photo}" alt="${m.name}">` : `<span>${m.name.split(' ').map(w=>w[0]).slice(0,2).join('')}</span>`}
-    </div></div>
-    <h4>${m.name}</h4>
-    <div class="role">${m.role}</div>
-    <div class="lead-social">${socialIcons}</div>
-  </div>
-`).join('');
-document.getElementById('committeeGrid').innerHTML = committeeTeam.map(n=>`
-  <div class="member-card">
-    <div class="avatar" style="width:52px;height:52px;font-size:17px;">${n.split(' ').map(w=>w[0]).slice(0,2).join('')}</div>
-    <div><h4 style="font-size:15px;">${n}</h4><div class="role">Committee Member</div></div>
-  </div>
-`).join('');
+function renderLeadership(){
+  const roles = t(currentLang, 'leadership.roles') || {};
+  document.getElementById('committeeLead').innerHTML = leadTeamBase.map(m=>`
+    <div class="lead-card">
+      <div class="lead-avatar"><div class="lead-avatar-inner">
+        ${m.photo ? `<img src="${m.photo}" alt="${m.name}">` : `<span>${m.name.split(' ').map(w=>w[0]).slice(0,2).join('')}</span>`}
+      </div></div>
+      <h4>${m.name}</h4>
+      <div class="role">${roles[m.roleKey] || m.roleKey}</div>
+      <div class="lead-social">${socialIcons}</div>
+    </div>
+  `).join('');
+  document.getElementById('committeeGrid').innerHTML = committeeTeam.map(n=>`
+    <div class="member-card">
+      <div class="avatar" style="width:52px;height:52px;font-size:17px;">${n.split(' ').map(w=>w[0]).slice(0,2).join('')}</div>
+      <div><h4 style="font-size:15px;">${n}</h4><div class="role">${roles['Committee Member'] || 'Committee Member'}</div></div>
+    </div>
+  `).join('');
+}
 
 /* ============ FUTURE MODULES ============ */
-const modules = [
-  {icon:'login', title:'Member Login', tag:'Q3 2026'},
-  {icon:'card', title:'Digital Membership Card', tag:'Q3 2026'},
-  {icon:'formInput', title:'Online Registration', tag:'Q3 2026'},
-  {icon:'matri', title:'Matrimonial Portal', tag:'Q4 2026'},
-  {icon:'scholarship', title:'Scholarship Portal', tag:'Q4 2026'},
-  {icon:'medPortal', title:'Medical Assistance Portal', tag:'Q4 2026'},
-  {icon:'blood', title:'Blood Donor Directory', tag:'Q4 2026'},
-  {icon:'funeral', title:'Funeral Management', tag:'2027'},
-  {icon:'hall', title:'Community Hall Booking', tag:'2027'},
-  {icon:'bizDir', title:'Business Directory', tag:'Live'},
-  {icon:'volunteer', title:'Volunteer Registration', tag:'2027'},
-  {icon:'complaint', title:'Complaint &amp; Suggestion Portal', tag:'2027'},
-  {icon:'job', title:'Job Portal', tag:'2027'},
-  {icon:'family', title:'Family Directory', tag:'2027'},
-  {icon:'download', title:'Document Downloads', tag:'2027'},
-  {icon:'eventReg', title:'Event Registration', tag:'Q3 2026'},
-  {icon:'history', title:'Donation History', tag:'Q4 2026'},
-  {icon:'dashboard', title:'Committee Dashboard', tag:'2027'},
-  {icon:'admin', title:'Admin Dashboard', tag:'2027'},
-];
-document.getElementById('modulesGrid').innerHTML = modules.map(m=>`
-  <div class="module-card"><span class="tag">${m.tag}</span><div class="ic">${svg(m.icon)}</div><h4>${m.title}</h4></div>
-`).join('');
+function renderModules(){
+  const items = t(currentLang, 'modules.items') || [];
+  document.getElementById('modulesGrid').innerHTML = items.map((m,i)=>`
+    <div class="module-card"><span class="tag">${m.tag}</span><div class="ic">${svg(moduleIcons[i])}</div><h4>${m.title}</h4></div>
+  `).join('');
+}
+
+/* ============ FAQ ============ */
+function renderFaq(){
+  const items = t(currentLang, 'faq.items') || [];
+  document.getElementById('faqWrap').innerHTML = items.map((f,i)=>`
+    <div class="faq-item ${i===0?'open':''}">
+      <button class="faq-q">${f.q}<span class="plus"></span></button>
+      <div class="faq-a"><p>${f.a}</p></div>
+    </div>
+  `).join('');
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const a = item.querySelector('.faq-a');
+    if(item.classList.contains('open')) a.style.maxHeight = a.scrollHeight+'px';
+    item.querySelector('.faq-q').onclick = ()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(o=>{ o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = null; });
+      if(!isOpen){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight+'px'; }
+    };
+  });
+}
+
+/* ============ FORMS ============ */
+function handleContactSubmit(evt, form){
+  form.reset();
+  alert(t(currentLang, 'contact.formSuccess'));
+}
+function handleNewsletterSubmit(evt, form){
+  form.reset();
+  alert(t(currentLang, 'footer.newsletterSuccess'));
+}
+
+/* ============ MASTER RENDER ============ */
+function renderAll(){
+  applyStaticI18n(currentLang);
+  renderPillars();
+  renderTimeline();
+  renderServices();
+  renderEvents();
+  renderAnnouncements();
+  renderDirectoryOptions();
+  renderDirectory();
+  renderGallery();
+  renderTestimonials();
+  renderLeadership();
+  renderModules();
+  renderFaq();
+  observeReveals();
+}
+
+/* ============ INIT ============ */
+(function init(){
+  let saved = 'en';
+  try{ saved = localStorage.getItem('jamatner_lang') || 'en'; }catch(e){}
+  if(!SUPPORTED_LANGS.includes(saved)) saved = 'en';
+  currentLang = saved;
+  renderAll();
+  updateLangUI(saved);
+})();
+
 </script>
 </body>
 </html>
