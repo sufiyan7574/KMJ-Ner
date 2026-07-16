@@ -667,13 +667,21 @@ body.splash-lock{overflow:hidden; height:100vh;}
   height:100%; width:0%; border-radius:100px;
   background:linear-gradient(90deg,var(--gold),var(--gold-bright));
 }
+.splash-credit{
+  margin-top:22px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em;
+  color:var(--ink-faint); line-height:1.9; opacity:0;
+  animation: textRise .9s var(--ease) 1.35s forwards;
+}
+.splash-credit .grad-gold{
+  font-family:'Cormorant',serif; font-size:14px; font-weight:700; letter-spacing:.04em;
+}
 @media(max-width:480px){
   .splash-ring-wrap{width:136px;height:136px;}
   .splash-logo-glow{width:88px;height:88px;}
   .splash-logo{width:78px;height:78px;}
 }
 @media (prefers-reduced-motion: reduce){
-  .splash-logo, .splash-brand, .splash-welcome, .splash-tagline, .splash-progress-track, .splash-logo-glow, .splash-pattern{ animation:none !important; opacity:1 !important; transform:none !important; }
+  .splash-logo, .splash-brand, .splash-welcome, .splash-tagline, .splash-progress-track, .splash-credit, .splash-logo-glow, .splash-pattern{ animation:none !important; opacity:1 !important; transform:none !important; }
 }
 
 /* ============ SCROLL PROGRESS ============ */
@@ -761,6 +769,7 @@ body.splash-lock{overflow:hidden; height:100vh;}
     <div class="splash-welcome">Welcome to the Official Digital Community Portal</div>
     <div class="splash-tagline">Serving with Faith • Unity • Welfare • Progress</div>
     <div class="splash-progress-track"><div class="splash-progress-fill" id="splashProgressFill"></div></div>
+    <div class="splash-credit">Designed &amp; Developed by<br><span class="grad-gold">Sufiyan Makwani</span></div>
   </div>
 </div>
 <script>
@@ -780,7 +789,7 @@ body.splash-lock{overflow:hidden; height:100vh;}
   ring.style.strokeDasharray = circumference;
   ring.style.strokeDashoffset = circumference;
 
-  var MIN_MS = 2700, MAX_MS = 6000;
+  var MIN_MS = 5500, MAX_MS = 8500;
   var start = performance.now();
   var pageLoaded = (document.readyState === 'complete');
   window.addEventListener('load', function(){ pageLoaded = true; });
